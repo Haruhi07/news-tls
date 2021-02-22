@@ -1,4 +1,5 @@
 import networkx as nx
+import numpy as np
 from scipy import sparse
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import normalize
@@ -7,7 +8,7 @@ from sklearn.cluster import MiniBatchKMeans
 
 class Summarizer:
 
-    def summarize(self, sents, k, vectorizer, filters=None):
+    def summarize(self, sents, k, vectorizer, embedder, filters=None):
         raise NotImplementedError
 
 
@@ -29,7 +30,7 @@ class TextRank(Summarizer):
         scores = [pagerank[i] for i in nodes]
         return scores
 
-    def summarize(self, sents, k, vectorizer, filter=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
         try:
             X = vectorizer.transform(raw_sents)
@@ -77,7 +78,7 @@ class CentroidRank(Summarizer):
         scores = cosine_similarity(X, centroid)
         return scores
 
-    def summarize(self, sents, k, vectorizer, filter=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
         try:
             X = vectorizer.transform(raw_sents)
@@ -125,16 +126,21 @@ class CentroidOpt(Summarizer):
         selected = []
         while len(remaining) > 0 and len(selected) < k:
             if len(selected) > 0:
-                summary_vector = sparse.vstack([X[i] for i in selected])
-                summary_vector = sparse.csr_matrix(summary_vector.sum(0))
+                #summary_vector = sparse.vstack([X[i] for i in selected])
+                #summary_vector = sparse.csr_matrix(summary_vector.sum(0))
+                summary_vector = np.sum(np.vstack([X[i] for i in selected]), axis=0)
             i_to_score = {}
             for i in remaining:
                 if len(selected) > 0:
                     new_x = X[i]
-                    new_summary_vector = sparse.vstack([new_x, summary_vector])
-                    new_summary_vector = normalize(new_summary_vector.sum(0))
+                    #new_summary_vector = sparse.vstack([new_x, summary_vector])
+                    new_summary_vector = np.sum(np.vstack([new_x, summary_vector]), axis=0).reshape(1, -1)
+                    new_summary_vector = normalize(new_summary_vector)
                 else:
                     new_summary_vector = X[i]
+
+                new_summary_vector = np.array(new_summary_vector).reshape(1, -1)
+                centroid = np.array(centroid).reshape(1, -1)
                 score = cosine_similarity(new_summary_vector, centroid)[0, 0]
                 i_to_score[i] = score
 
@@ -153,20 +159,28 @@ class CentroidOpt(Summarizer):
 
     def is_redundant(self, new_i, selected, X):
         summary_vectors = [X[i] for i in selected]
-        new_x = X[new_i]
+        new_x = np.array(X[new_i]).reshape(1, -1)
         for x in summary_vectors:
-            if cosine_similarity(new_x, x)[0] > self.max_sim:
+            tmp_x = np.array(x).reshape(1, -1)
+            if cosine_similarity(new_x, tmp_x)[0] > self.max_sim:
                 return True
         return False
 
-    def summarize(self, sents, k, vectorizer, filter=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
-        try:
-            X = vectorizer.transform(raw_sents)
-        except:
-            return None
-        X = sparse.csr_matrix(X)
-        Xsum = sparse.csr_matrix(X.sum(0))
+        if vectorizer != None:
+            try:
+                X = vectorizer.transform(raw_sents)
+            except:
+                return None
+        else:
+            X = embedder.encode(raw_sents)
+
+        #X = sparse.csr_matrix(X)
+        #Xsum = sparse.csr_matrix(X.sum(0))
+        Xsum = np.sum(X, axis=0).reshape(1, -1)
+        with open("log.txt", "a") as ftmp:
+            print("Xsum: {}".format(Xsum), file=ftmp)
         centroid = normalize(Xsum)
         selected = self.optimise(centroid, X, sents, k, filter)
         summary = [sents[i].raw for i in selected]
@@ -260,7 +274,7 @@ class SubmodularSummarizer(Summarizer):
 
         return selected
 
-    def summarize(self, sents, k, vectorizer, filter=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
         try:
             X = vectorizer.transform(raw_sents)

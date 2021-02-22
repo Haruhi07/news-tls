@@ -78,6 +78,8 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
     n_topics = len(dataset.collections)
 
     for i, collection in enumerate(dataset.collections):
+        if i == 1:
+            break
 
         ref_timelines = [TilseTimeline(tl.date_to_summaries)
                          for tl in collection.timelines]

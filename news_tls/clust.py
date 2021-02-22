@@ -9,7 +9,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy import sparse
 from typing import List
 from news_tls import utils, data
-
+from sentence_transformers import SentenceTransformer
+import logging
 
 class ClusteringTimelineGenerator():
     def __init__(self,
@@ -38,8 +39,11 @@ class ClusteringTimelineGenerator():
 
         print('clustering articles...')
         # word embedding
-        doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
-        clusters = self.clusterer.cluster(collection, doc_vectorizer)
+        vectorizer = None
+        embedder = SentenceTransformer('stsb-distilbert-base')
+        clusters = self.clusterer.cluster(collection, None, embedder)
+        #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
+        #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
 
         print('assigning cluster times...')
         for c in clusters:
@@ -53,8 +57,8 @@ class ClusteringTimelineGenerator():
         print('vectorizing sentences...')
         raw_sents = [s.raw for a in collection.articles() for s in
                      a.sentences[:self.clip_sents]]
-        vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
-        vectorizer.fit(raw_sents)
+        #vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
+        #vectorizer.fit(raw_sents)
 
         def sent_filter(sent):
             """
@@ -86,7 +90,8 @@ class ClusteringTimelineGenerator():
             summary = self.summarizer.summarize(
                 c_sents,
                 k=max_summary_sents,
-                vectorizer=vectorizer,
+                vectorizer=None,
+                embedder=embedder,
                 filter=sent_filter
             )
 
@@ -153,12 +158,14 @@ class Cluster:
             return None
 
     def update_centroid(self):
-        X = sparse.vstack(self.vectors)
-        self.centroid = sparse.csr_matrix.mean(X, axis=0)
+        #X = sparse.vstack(self.vectors)
+        #self.centroid = sparse.csr_matrix.mean(X, axis=0)
+        X = np.vstack(self.vectors)
+        self.centroid = np.mean(X, axis=0)
 
 
 class Clusterer():
-    def cluster(self, collection, vectorizer) -> List[Cluster]:
+    def cluster(self, collection, vectorizer, embedder) -> List[Cluster]:
         raise NotImplementedError
 
 
@@ -167,7 +174,7 @@ class OnlineClusterer(Clusterer):
         self.max_days = max_days
         self.min_sim = min_sim
 
-    def cluster(self, collection, vectorizer) -> List[Cluster]:
+    def cluster(self, collection, vectorizer, embedder) -> List[Cluster]:
         # build article vectors
         texts = ['{} {}'.format(a.title, a.text) for a in collection.articles]
         try:
@@ -225,14 +232,17 @@ class TemporalMarkovClusterer(Clusterer):
     def __init__(self, max_days=1):
         self.max_days = max_days
 
-    def cluster(self, collection, vectorizer) -> List[Cluster]:
+    def cluster(self, collection, vectorizer, embedder) -> List[Cluster]:
         articles = list(collection.articles())
         texts = ['{} {}'.format(a.title, a.text) for a in articles]
         # word embedding
-        try:
-            X = vectorizer.transform(texts)
-        except:
-            X = vectorizer.fit_transform(texts)
+        if vectorizer != None:
+            try:
+                X = vectorizer.transform(texts)
+            except:
+                X = vectorizer.fit_transform(texts)
+        else:
+            X = embedder.encode(texts)
 
         times = [a.time for a in articles]
 
@@ -240,7 +250,7 @@ class TemporalMarkovClusterer(Clusterer):
         S = self.temporal_graph(X, times)
         #print('S shape:', S.shape)
         print('run markov clustering...')
-        result = mc.run_mcl(S)
+        result = mc.run_mcl(S, inflation=3)
         print('done')
 
         idx_clusters = mc.get_clusters(result)
@@ -249,7 +259,7 @@ class TemporalMarkovClusterer(Clusterer):
         print(f'times: {len(set(times))} articles: {len(articles)} '
               f'clusters: {len(idx_clusters)}')
 
-        f = open("log.txt", "a+")
+        f = open("clust_result.txt", "w")
         print("--------------", file=f)
 
         clusters = []
@@ -257,8 +267,10 @@ class TemporalMarkovClusterer(Clusterer):
             print(c, file=f)
             c_vectors = [X[i] for i in c]
             c_articles = [articles[i] for i in c]
-            Xc = sparse.vstack(c_vectors)
-            centroid = sparse.csr_matrix(Xc.mean(axis=0))
+            #Xc = sparse.vstack(c_vectors)
+            #centroid = sparse.csr_matrix(Xc.mean(axis=0))
+            Xc = np.vstack(c_vectors)
+            centroid = np.mean(Xc, axis=0)
             cluster = Cluster(c_articles, c_vectors, centroid=centroid)
             #print(c_articles, centroid, file=f)
             clusters.append(cluster)
@@ -273,22 +285,30 @@ class TemporalMarkovClusterer(Clusterer):
         for i in range(len(times)):
             time_to_ixs[times[i]].append(i)
 
+
         n_items = X.shape[0]
+        with open("log.txt", "w") as ftmp:
+            print(X.shape, file=ftmp)
         S = sparse.lil_matrix((n_items, n_items))
         start, end = min(times), max(times)
         total_days = (end - start).days + 1
 
         for n in range(total_days + 1):
             t = start + datetime.timedelta(days=n)
-            window_size =  min(self.max_days + 1, total_days + 1 - n)
+            window_size = min(self.max_days + 1, total_days + 1 - n)
             window = [t + datetime.timedelta(days=k) for k in range(window_size)]
+            with open("log.txt", "a") as ftmp:
+                print(window, file=ftmp)
 
             if n == 0 or len(window) == 1:
                 indices = [i for t in window for i in time_to_ixs[t]]
+                with open("log.txt", "a") as ftmp:
+                    print(indices, file=ftmp)
                 if len(indices) == 0:
                     continue
 
-                X_n = sparse.vstack([X[i] for i in indices])
+                #X_n = sparse.vstack([X[i] for i in indices])
+                X_n = np.vstack([X[i] for i in indices])
                 S_n = cosine_similarity(X_n)
                 n_items = len(indices)
                 for i_x, i_n in zip(indices, range(n_items)):
@@ -302,15 +322,18 @@ class TemporalMarkovClusterer(Clusterer):
                 if len(new_indices) == 0:
                     continue
 
-                X_prev = sparse.vstack([X[i] for i in prev_indices])
-                X_new = sparse.vstack([X[i] for i in new_indices])
+                #X_prev = sparse.vstack([X[i] for i in prev_indices])
+                #X_new = sparse.vstack([X[i] for i in new_indices])
+                X_prev = np.vstack([X[i] for i in prev_indices])
+                X_new = np.vstack([X[i] for i in new_indices])
                 S_n = cosine_similarity(X_prev, X_new)
                 n_prev, n_new = len(prev_indices), len(new_indices)
                 for i_x, i_n in zip(prev_indices, range(n_prev)):
                     for j_x, j_n in zip(new_indices, range(n_new)):
                         S[i_x, j_x] = S_n[i_n, j_n]
 
-        return sparse.csr_matrix(S)
+        #return sparse.csr_matrix(S)
+        return S
 
 
 ############################### CLUSTER RANKING ################################

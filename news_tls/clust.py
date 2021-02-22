@@ -250,7 +250,7 @@ class TemporalMarkovClusterer(Clusterer):
         S = self.temporal_graph(X, times)
         #print('S shape:', S.shape)
         print('run markov clustering...')
-        result = mc.run_mcl(S, inflation=3)
+        result = mc.run_mcl(S, inflation=5)
         print('done')
 
         idx_clusters = mc.get_clusters(result)

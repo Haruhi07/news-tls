@@ -76,6 +76,7 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
     metric = 'align_date_content_costs_many_to_one'
     evaluator = rouge.TimelineRougeEvaluator(measures=["rouge_1", "rouge_2"])
     n_topics = len(dataset.collections)
+    ave_cluster = 0
 
     for i, collection in enumerate(dataset.collections):
 
@@ -84,6 +85,7 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
         topic = collection.name
         n_ref = len(ref_timelines)
 
+        # only for entity
         if trunc_timelines:
             ref_timelines = data.truncate_timelines(ref_timelines, collection)
 
@@ -95,23 +97,26 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
             tls_model.load(ignored_topics=[collection.name])
 
             ref_dates = sorted(ref_timeline.dates_to_summaries)
+            #print("data to summaries = {}".format(ref_dates))
 
             start, end = data.get_input_time_span(ref_dates, time_span_extension)
 
             collection.start = start
             collection.end = end
+            print("name = {} start = {} end = {}".format(topic, start, end))
 
             #utils.plot_date_stats(collection, ref_dates)
 
             l = len(ref_dates)
             k = data.get_average_summary_length(ref_timeline)
 
-            pred_timeline_ = tls_model.predict(
+            pred_timeline_, n_clusters = tls_model.predict(
                 collection,
                 max_dates=l,
                 max_summary_sents=k,
                 ref_tl=ref_timeline # only oracles need this
             )
+            ave_cluster = ave_cluster + n_clusters
 
             # print('*** PREDICTED ***')
             # utils.print_tl(pred_timeline_)
@@ -138,6 +143,7 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
     print('Average results:')
     pprint(avg_results)
     output = {
+        'average_clusters': ave_cluster / len(dataset.collections),
         'average': avg_results,
         'results': results,
     }
@@ -146,11 +152,11 @@ def evaluate(tls_model, dataset, result_path, trunc_timelines=False, time_span_e
 
 def main(args):
 
-    dataset_path = Path(args.dataset)
+    dataset_path = Path(args.dataset) # list current absolute path
     if not dataset_path.exists():
         raise FileNotFoundError(f'Dataset not found: {args.dataset}')
     dataset = data.Dataset(dataset_path)
-    dataset_name = dataset_path.name
+    dataset_name = dataset_path.name # last part of the path
 
     if args.method == 'datewise':
         resources = Path(args.resources)

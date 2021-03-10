@@ -1,4 +1,5 @@
 venv/
-*.txt
+*log.txt
+clust_result.txt
 .idea/
 *.pdf

@@ -276,10 +276,14 @@ class ArticleCollection:
     def _load_timelines(self):
         timelines = []
         path = self.path / 'timelines.jsonl'
+        with open("data_log.txt", "a") as ftmp:
+            print(path, file=ftmp)
         if not path.exists():
             return []
         for raw_tl in utils.read_jsonl(path):
             if raw_tl:
+                with open("data_log.txt", "a") as ftmp:
+                    print(raw_tl, file=ftmp)
                 tl_items = []
                 for t, s in raw_tl:
                     t = self.normalise_time(arrow.get(t))
@@ -295,13 +299,15 @@ class ArticleCollection:
             articles = utils.read_jsonl(path1)
         else:
             articles = utils.read_jsonl_gz(path2)
+
         for a_ in articles:
             a = load_article(a_)
-            t = self.normalise_time(a.time)
-            if self.start and t < self.start:
-                continue
-            if self.end and t > self.end:
-                break
+            # removed time constraint
+            #t = self.normalise_time(a.time)
+            #if self.start and t < self.start - datetime.timedelta(5):
+            #    continue
+            #if self.end and t > self.end + datetime.timedelta(5):
+            #    break
             yield a
 
     def time_batches(self):
@@ -343,6 +349,8 @@ class ArticleCollection:
 class Timeline:
     def __init__(self, items):
         self.items = sorted(items, key=lambda x: x[0])
+        with open("data_log.txt", "a") as ftmp:
+            print(self.items, file=ftmp)
         self.time_to_summaries = dict((t, s) for t, s in items)
         self.date_to_summaries = dict((t.date(), s) for t, s in items)
         self.times = sorted(self.time_to_summaries)

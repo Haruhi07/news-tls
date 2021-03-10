@@ -160,9 +160,10 @@ class CentroidOpt(Summarizer):
     def is_redundant(self, new_i, selected, X):
         summary_vectors = [X[i] for i in selected]
         new_x = np.array(X[new_i]).reshape(1, -1)
+        #new_x = X[new_i]
         for x in summary_vectors:
-            tmp_x = np.array(x).reshape(1, -1)
-            if cosine_similarity(new_x, tmp_x)[0] > self.max_sim:
+            x = np.array(x).reshape(1, -1)
+            if cosine_similarity(new_x, x)[0] > self.max_sim:
                 return True
         return False
 
@@ -179,8 +180,8 @@ class CentroidOpt(Summarizer):
         #X = sparse.csr_matrix(X)
         #Xsum = sparse.csr_matrix(X.sum(0))
         Xsum = np.sum(X, axis=0).reshape(1, -1)
-        with open("log.txt", "a") as ftmp:
-            print("Xsum: {}".format(Xsum), file=ftmp)
+        #with open("log.txt", "a") as ftmp:
+        #    print("Xsum: {}".format(Xsum), file=ftmp)
         centroid = normalize(Xsum)
         selected = self.optimise(centroid, X, sents, k, filter)
         summary = [sents[i].raw for i in selected]

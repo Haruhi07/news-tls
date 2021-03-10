@@ -21,7 +21,7 @@ class ClusteringTimelineGenerator():
                  key_to_model=None,
                  unique_dates=True):
 
-        self.clusterer = clusterer or TemporalMarkovClusterer()
+        self.clusterer = clusterer or TemporalMarkovClusterer(max_days=1)
         self.cluster_ranker = cluster_ranker or ClusterDateMentionCountRanker()
         self.summarizer = summarizer or summarizers.CentroidOpt()
         self.key_to_model = key_to_model
@@ -44,6 +44,7 @@ class ClusteringTimelineGenerator():
         clusters = self.clusterer.cluster(collection, None, embedder)
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
+        clusters_num = len(clusters)
 
         print('assigning cluster times...')
         for c in clusters:
@@ -59,6 +60,7 @@ class ClusteringTimelineGenerator():
                      a.sentences[:self.clip_sents]]
         #vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #vectorizer.fit(raw_sents)
+        #embedder = None
 
         def sent_filter(sent):
             """
@@ -90,7 +92,7 @@ class ClusteringTimelineGenerator():
             summary = self.summarizer.summarize(
                 c_sents,
                 k=max_summary_sents,
-                vectorizer=None,
+                vectorizer=vectorizer,
                 embedder=embedder,
                 filter=sent_filter
             )
@@ -112,7 +114,7 @@ class ClusteringTimelineGenerator():
             timeline.append((t, summary))
         timeline.sort(key=lambda x: x[0])
 
-        return data.Timeline(timeline)
+        return data.Timeline(timeline), clusters_num
 
     def _select_sents_from_cluster(self, cluster):
         sents = []
@@ -234,23 +236,37 @@ class TemporalMarkovClusterer(Clusterer):
 
     def cluster(self, collection, vectorizer, embedder) -> List[Cluster]:
         articles = list(collection.articles())
-        texts = ['{} {}'.format(a.title, a.text) for a in articles]
         # word embedding
         if vectorizer != None:
+            texts = ['{} {}'.format(a.title, a.text) for a in articles]
             try:
                 X = vectorizer.transform(texts)
             except:
                 X = vectorizer.fit_transform(texts)
         else:
-            X = embedder.encode(texts)
+            texts = list()
+            for a in articles:
+                tmp_text = list()
+                if a.title:
+                    tmp_text.append(a.title)
+                tmp_text.extend(a.text.split('\n'))
+                sent_embed = embedder.encode(tmp_text)
+                texts.append(np.sum(sent_embed, axis=0) / len(sent_embed[0])) #use average sentence embeddings as document embedding
+
+            X = np.vstack(texts)
+
+
+        f = open("clust_result.txt", "w")
+        print("--------------", file=f)
 
         times = [a.time for a in articles]
+        print(times, file=f)
 
         print('temporal graph...')
         S = self.temporal_graph(X, times)
-        #print('S shape:', S.shape)
+
         print('run markov clustering...')
-        result = mc.run_mcl(S, inflation=5)
+        result = mc.run_mcl(S, inflation=2)
         print('done')
 
         idx_clusters = mc.get_clusters(result)
@@ -259,14 +275,14 @@ class TemporalMarkovClusterer(Clusterer):
         print(f'times: {len(set(times))} articles: {len(articles)} '
               f'clusters: {len(idx_clusters)}')
 
-        f = open("clust_result.txt", "w")
-        print("--------------", file=f)
 
         clusters = []
         for c in idx_clusters:
             print(c, file=f)
             c_vectors = [X[i] for i in c]
             c_articles = [articles[i] for i in c]
+            for a in c_articles:
+                print(a.time, file=f)
             #Xc = sparse.vstack(c_vectors)
             #centroid = sparse.csr_matrix(Xc.mean(axis=0))
             Xc = np.vstack(c_vectors)
@@ -287,9 +303,9 @@ class TemporalMarkovClusterer(Clusterer):
 
 
         n_items = X.shape[0]
-        with open("log.txt", "w") as ftmp:
-            print(X.shape, file=ftmp)
-        S = sparse.lil_matrix((n_items, n_items))
+
+        #S = sparse.lil_matrix((n_items, n_items))
+        S = np.zeros((n_items, n_items))
         start, end = min(times), max(times)
         total_days = (end - start).days + 1
 
@@ -297,13 +313,10 @@ class TemporalMarkovClusterer(Clusterer):
             t = start + datetime.timedelta(days=n)
             window_size = min(self.max_days + 1, total_days + 1 - n)
             window = [t + datetime.timedelta(days=k) for k in range(window_size)]
-            with open("log.txt", "a") as ftmp:
-                print(window, file=ftmp)
+
 
             if n == 0 or len(window) == 1:
                 indices = [i for t in window for i in time_to_ixs[t]]
-                with open("log.txt", "a") as ftmp:
-                    print(indices, file=ftmp)
                 if len(indices) == 0:
                     continue
 

@@ -19,7 +19,7 @@
 module load lang/python/anaconda/ lang/cuda
 
 # We might need to add the global paths to our code to the pythonpath. Also set the data directories globally.
-cd /home/hs20307/news_tls
+cd /home/hs20307/news-tls
 export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 
 #  run the script

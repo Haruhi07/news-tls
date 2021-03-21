@@ -23,10 +23,10 @@ cd /home/hs20307/news_tls
 export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 
 #  run the script
-DATASET=~/Dataset
+DATASET=/work/hs20307/Dataset
 RESULT=./result
 
-python experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
+python -u ./experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh
 # To display the queue: qstat -Q gpu (this is usually where the GPU job ends up)

@@ -11,7 +11,7 @@ from sklearn.exceptions import ConvergenceWarning
 from scipy import sparse
 from typing import List
 from news_tls import utils, data
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, util
 import logging
 
 class ClusteringTimelineGenerator():
@@ -42,7 +42,7 @@ class ClusteringTimelineGenerator():
         print('clustering articles...')
         # word embedding
         vectorizer = None
-        embedder = SentenceTransformer('stsb-distilbert-base')
+        embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
         clusters = self.clusterer.cluster(collection, None, embedder)
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)

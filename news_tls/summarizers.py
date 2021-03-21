@@ -169,19 +169,8 @@ class CentroidOpt(Summarizer):
 
     def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
-        if vectorizer != None:
-            try:
-                X = vectorizer.transform(raw_sents)
-            except:
-                return None
-        else:
-            X = embedder.encode(raw_sents)
-
-        #X = sparse.csr_matrix(X)
-        #Xsum = sparse.csr_matrix(X.sum(0))
+        X = embedder.encode(raw_sents)
         Xsum = np.sum(X, axis=0).reshape(1, -1)
-        #with open("log.txt", "a") as ftmp:
-        #    print("Xsum: {}".format(Xsum), file=ftmp)
         centroid = normalize(Xsum)
         selected = self.optimise(centroid, X, sents, k, filter)
         summary = [sents[i].raw for i in selected]
@@ -277,11 +266,7 @@ class SubmodularSummarizer(Summarizer):
 
     def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raw_sents = [s.raw for s in sents]
-        try:
-            X = vectorizer.transform(raw_sents)
-        except:
-            return None
-
+        X = embedder.encode(raw_sents)
         ix_to_label = self.cluster_sentences(X)
         pairwise_sims = cosine_similarity(X)
         sent_coverages = pairwise_sims.sum(0)

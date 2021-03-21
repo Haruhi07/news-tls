@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Job name
-#PBS -N NER_AAAI20
+#PBS -N news_tls
 
 # Output file
-#PBS -o NER_AAAI20_output.log
+#PBS -o new_tls_output.log
 
 # Error file
-#PBS -e NER_AAAI20_err.log
+#PBS -e new_tls_err.log
 
 # request resources and set limits
 #PBS -l walltime=72:00:00
@@ -16,14 +16,17 @@
 # 'select' chooses number of nodes.
 
 #  load required modules
-module load lang/python/anaconda/pytorch lang/cuda
+module load lang/python/anaconda/ lang/cuda
 
 # We might need to add the global paths to our code to the pythonpath. Also set the data directories globally.
-cd /work/es1595/arxiv2018-bayesian-ensembles
-export PYTHONPATH=$PYTHONPATH:"/work/es1595/arxiv2018-bayesian-ensembles/src"
+cd /home/hs20307/news_tls
+export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news_tls/"
 
 #  run the script
-python -u src/experiments/AAAI2020/run_ner_experiments_gpu.py
+DATASET=~/Dataset
+RESULT=./result
+
+python experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh
 # To display the queue: qstat -Q gpu (this is usually where the GPU job ends up)

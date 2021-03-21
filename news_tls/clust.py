@@ -6,6 +6,8 @@ import collections
 import markov_clustering as mc
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.cluster import AffinityPropagation, AgglomerativeClustering
+from sklearn.exceptions import ConvergenceWarning
 from scipy import sparse
 from typing import List
 from news_tls import utils, data
@@ -56,11 +58,6 @@ class ClusteringTimelineGenerator():
         ranked_clusters = self.cluster_ranker.rank(clusters, collection)
 
         print('vectorizing sentences...')
-        raw_sents = [s.raw for a in collection.articles() for s in
-                     a.sentences[:self.clip_sents]]
-        #vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
-        #vectorizer.fit(raw_sents)
-        #embedder = None
 
         def sent_filter(sent):
             """
@@ -119,7 +116,6 @@ class ClusteringTimelineGenerator():
     def _select_sents_from_cluster(self, cluster):
         sents = []
         for a in cluster.articles:
-            pub_d = a.time.date()
             for s in a.sentences[:self.clip_sents]:
                 sents.append(s)
         return sents
@@ -251,7 +247,7 @@ class TemporalMarkovClusterer(Clusterer):
                     tmp_text.append(a.title)
                 tmp_text.extend(a.text.split('\n'))
                 sent_embed = embedder.encode(tmp_text)
-                texts.append(np.sum(sent_embed, axis=0) / len(sent_embed[0])) #use average sentence embeddings as document embedding
+                texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding
 
             X = np.vstack(texts)
 
@@ -266,7 +262,7 @@ class TemporalMarkovClusterer(Clusterer):
         S = self.temporal_graph(X, times)
 
         print('run markov clustering...')
-        result = mc.run_mcl(S, inflation=2)
+        result = mc.run_mcl(S)
         print('done')
 
         idx_clusters = mc.get_clusters(result)
@@ -347,6 +343,82 @@ class TemporalMarkovClusterer(Clusterer):
 
         #return sparse.csr_matrix(S)
         return S
+
+class AffinityPropagationClusterer(Clusterer):
+    def __init__(self, max_days=1):
+        self.max_days = max_days
+
+    def cluster(self, collection, vectorizer, embedder) -> List[Cluster]:
+        articles = list(collection.articles())
+
+        if vectorizer != None:
+            texts = ['{} {}'.format(a.title, a.text) for a in articles]
+            X = vectorizer.fit_transform(texts)
+        else:
+            texts = list()
+            for a in articles:
+                tmp_text = list()
+                if a.title:
+                    tmp_text.append(a.title)
+                tmp_text.extend(a.text.split('\n'))
+                sent_embed = embedder.encode(tmp_text)
+                texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding
+
+            X = np.vstack(texts)
+
+        times = [a.time for a in articles]
+
+        def calculate_similarity(method = 'euclid'):
+            if method == 'euclid':
+                S = np.zeros((len(X), len(X)))
+                for i in range(len(X)):
+                    for j in range(i, len(X)):
+                        S[i][j] = - sum((X[i] - X[j]) ** 2)
+                        S[j][i] = S[i][j]
+            elif method == 'cosine':
+                S = cosine_similarity(X) - 1
+
+            for i, time_i in enumerate(times):
+                for j, time_j in enumerate(times):
+                    time_gap = max(time_i, time_j) - min(time_i, time_j)
+                    if time_gap > datetime.timedelta(days=1):
+                        S[i][j] = -100
+            return S
+
+        S = calculate_similarity('euclid')
+        af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+        cluster_centers = af.cluster_centers_indices_
+        labels = af.labels_
+
+        if labels[0] == -1:
+            S = calculate_similarity('cosine')
+            af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+            cluster_centers = af.cluster_centers_indices_
+            labels = af.labels_
+
+        print(f'times: {len(set(times))} articles: {len(articles)} '
+              f'clusters: {len(set(labels))}')
+
+        print(labels)
+#        print(cluster_centers)
+
+        idx_clusters = collections.defaultdict(list)
+        for i in range(len(X)):
+            idx_clusters[cluster_centers[labels[i]]].append(i)
+        for c in idx_clusters:
+            print('{} {}'.format(c, idx_clusters[c]))
+
+        clusters = []
+        for c in idx_clusters:
+            c_vectors = [X[i] for i in idx_clusters[c]]
+            c_articles = [articles[i] for i in idx_clusters[c]]
+            Xc = np.vstack(c_vectors)
+            centroid = np.mean(Xc, axis=0)
+            cluster = Cluster(c_articles, c_vectors, centroid=centroid)
+            clusters.append(cluster)
+
+        return clusters
+
 
 
 ############################### CLUSTER RANKING ################################

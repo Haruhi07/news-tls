@@ -178,7 +178,7 @@ def main(args):
 
     elif args.method == 'clust':
         cluster_ranker = clust.ClusterDateMentionCountRanker()
-        clusterer = clust.TemporalMarkovClusterer()
+        clusterer = clust.AffinityPropagationClusterer()
         summarizer = summarizers.CentroidOpt()
         system = clust.ClusteringTimelineGenerator(
             cluster_ranker=cluster_ranker,

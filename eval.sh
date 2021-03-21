@@ -1,4 +1,4 @@
 DATASET=~/Dataset
 RESULT=./result
 
-python experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json > log.txt
+python experiments/evaluate.py --dataset $DATASET/t17 --method clust --output $RESULT/t17.clust.json > log.txt

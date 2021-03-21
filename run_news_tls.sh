@@ -4,10 +4,10 @@
 #PBS -N news_tls
 
 # Output file
-#PBS -o new_tls_output.log
+#PBS -o news_tls_output.log
 
 # Error file
-#PBS -e new_tls_err.log
+#PBS -e news_tls_err.log
 
 # request resources and set limits
 #PBS -l walltime=72:00:00
@@ -26,6 +26,7 @@ export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 DATASET=/work/hs20307/Dataset
 RESULT=./result
 
+CUDA_LAUNCH_BLOCKING=1
 python -u ./experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh

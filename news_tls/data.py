@@ -303,11 +303,11 @@ class ArticleCollection:
         for a_ in articles:
             a = load_article(a_)
             # removed time constraint
-            #t = self.normalise_time(a.time)
-            #if self.start and t < self.start - datetime.timedelta(5):
-            #    continue
-            #if self.end and t > self.end + datetime.timedelta(5):
-            #    break
+            t = self.normalise_time(a.time)
+            if self.start and t < self.start:
+                continue
+            if self.end and t > self.end:
+                break
             yield a
 
     def time_batches(self):

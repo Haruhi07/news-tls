@@ -361,7 +361,10 @@ class AffinityPropagationClusterer(Clusterer):
                 if a.title:
                     tmp_text.append(a.title)
                 tmp_text.extend(a.text.split('\n'))
-                sent_embed = [embedder.encode(sent) for sent in tmp_text]
+                sent_embed = []
+                for sent in tmp_text:
+                    print(sent)
+                    sent_embed = sent_embed.append(embedder.encode(sent))
                 texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding
 
             X = np.vstack(texts)

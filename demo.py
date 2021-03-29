@@ -1,6 +1,6 @@
 import json
 
-f = open("log.txt", "r")
+f = open("backup_log.txt", "r")
 for line in f:
     print(line)
     data = json.loads(line)

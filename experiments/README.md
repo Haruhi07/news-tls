@@ -23,7 +23,7 @@ Running & evaluating the `clust` method on the `t17` dataset:
 python experiments/evaluate.py \
 	--dataset $DATASETS/t17 \
 	--method clust \
-	--output $RESULTS/t17.clust.json
+	--output $RESULTS/para_distillrobeta_doc_AP.json
 ```
 
 For the other datasets, simply replace `t17` with `crisis` or `entities`.

@@ -47,6 +47,7 @@ class ClusteringTimelineGenerator():
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
         clusters_num = len(clusters)
+        #LDA here
 
         print('assigning cluster times...')
         for c in clusters:
@@ -361,10 +362,7 @@ class AffinityPropagationClusterer(Clusterer):
                 if a.title:
                     tmp_text.append(a.title)
                 tmp_text.extend(a.text.split('\n'))
-                sent_embed = []
-                for sent in tmp_text:
-                    print(sent)
-                    sent_embed = sent_embed.append(embedder.encode(sent))
+                sent_embed = embedder.encode(tmp_text)
                 texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding
 
             X = np.vstack(texts)
@@ -403,7 +401,7 @@ class AffinityPropagationClusterer(Clusterer):
               f'clusters: {len(set(labels))}')
 
         print(labels)
-#        print(cluster_centers)
+        print(cluster_centers)
 
         idx_clusters = collections.defaultdict(list)
         for i in range(len(X)):
@@ -416,7 +414,8 @@ class AffinityPropagationClusterer(Clusterer):
             c_vectors = [X[i] for i in idx_clusters[c]]
             c_articles = [articles[i] for i in idx_clusters[c]]
             Xc = np.vstack(c_vectors)
-            centroid = np.mean(Xc, axis=0)
+            #centroid = np.mean(Xc, axis=0)
+            centroid = X[c]
             cluster = Cluster(c_articles, c_vectors, centroid=centroid)
             clusters.append(cluster)
 

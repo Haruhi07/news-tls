@@ -16,6 +16,7 @@
 # 'select' chooses number of nodes.
 
 #  load required modules
+source activate news_tls
 module load lang/python/anaconda/ lang/cuda
 
 # We might need to add the global paths to our code to the pythonpath. Also set the data directories globally.

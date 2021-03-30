@@ -1,9 +1,12 @@
-from sentence_transformers import SentenceTransformer, util
+import scipy
+print(scipy.__version__)
 
-corpus = ['An apple a day, keep doctors away', 'All work no play, make Jack a dull boy', 'Take me to your heart, take me to your soul']
+#from sentence_transformers import SentenceTransformer, util
 
-embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
+#corpus = ['An apple a day, keep doctors away', 'All work no play, make Jack a dull boy', 'Take me to your heart, take me to your soul']
 
-embedding = embedder.encode(corpus)
+#embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
 
-print(embedding)
+#embedding = embedder.encode(corpus)
+
+#print(embedding)

@@ -1,5 +1,4 @@
-import scipy
-print(scipy.__version__)
+from scipy.sparse import issparse
 
 #from sentence_transformers import SentenceTransformer, util
 

@@ -25,7 +25,7 @@ export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 #  run the script
 export DATASET=/work/hs20307/Dataset
 export RESULT=./result
-export TOKENIZERS_PARALLELISM=true
+export TOKENIZERS_PARALLELISM=false
 
 python -u ./experiments/evaluate.py --dataset $DATASET/t17 --method clust --output $RESULT/t17.clust.json
 

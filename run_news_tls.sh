@@ -27,7 +27,7 @@ DATASET=/work/hs20307/Dataset
 RESULT=./result
 
 CUDA_LAUNCH_BLOCKING=1
-python -u ./experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
+python -u ./experiments/evaluate.py --dataset $DATASET/t17 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh
 # To display the queue: qstat -Q gpu (this is usually where the GPU job ends up)

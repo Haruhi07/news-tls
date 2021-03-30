@@ -25,8 +25,8 @@ export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 #  run the script
 DATASET=/work/hs20307/Dataset
 RESULT=./result
+TOKENIZERS_PARALLELISM=true
 
-CUDA_LAUNCH_BLOCKING=1
 python -u ./experiments/evaluate.py --dataset $DATASET/t17 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh

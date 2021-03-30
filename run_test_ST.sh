@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Job name
-#PBS -N news_tls
+#PBS -N test_ST
 
 # Output file
-#PBS -o news_tls_output.log
+#PBS -o test_ST_output.log
 
 # Error file
-#PBS -e news_tls_err.log
+#PBS -e test_ST_err.log
 
 # request resources and set limits
 #PBS -l walltime=72:00:00

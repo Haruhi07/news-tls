@@ -248,7 +248,7 @@ class TemporalMarkovClusterer(Clusterer):
                     tmp_text.append(a.title)
                 sents = a.text.split('\n')
                 for sent in sents:
-                    if sent != '':
+                    if sent != b'':
                         tmp_text.append(sent)
                 sent_embed = embedder.encode(tmp_text)
                 texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding

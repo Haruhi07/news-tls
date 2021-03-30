@@ -364,7 +364,10 @@ class AffinityPropagationClusterer(Clusterer):
                 tmp_text = list()
                 if a.title:
                     tmp_text.append(a.title)
-                tmp_text.extend(a.text.split('\n'))
+                sents = a.text.split('\n')
+                for sent in sents:
+                    if sent != b'':
+                        tmp_text.append(sent)
                 sent_embed = embedder.encode(tmp_text)
                 texts.append(np.mean(sent_embed, axis=0)) #use average sentence embeddings as document embedding
 
@@ -390,7 +393,7 @@ class AffinityPropagationClusterer(Clusterer):
             return S
 
         S = calculate_similarity('euclid')
-        af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+        af = AffinityPropagation(preference=-50, affinity='precomputed', random_state=None).fit(S)
         cluster_centers = af.cluster_centers_indices_
         labels = af.labels_
 

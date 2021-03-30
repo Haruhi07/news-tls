@@ -1,0 +1,8 @@
+ 
+ University of Bristol ACRC HPC Bluepebble Service
+ -------------------------------------------------
+ Job news_tls, jobid 1202243.bp1, username hs20307 - started execution at 01:45:20 Tue 30/03/21 on node bp1-gpu00017.data.bp.acrc.priv
+ 
+topic 1/1: EgyptianProtest_cnn, ref timeline 1/1
+name = EgyptianProtest_cnn start = 2011-01-25 00:00:00 end = 2011-02-13 00:00:00
+clustering articles...

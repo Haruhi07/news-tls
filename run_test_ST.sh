@@ -17,7 +17,6 @@
 
 #  load required modules
 module load lang/python/anaconda  lang/cuda
-source activate news_tls
 
 # We might need to add the global paths to our code to the pythonpath. Also set the data directories globally.
 cd /home/hs20307/news-tls

@@ -1,34 +1,38 @@
 Traceback (most recent call last):
-  File "./experiments/test_ST.py", line 1, in <module>
-    from sentence_transformers import SentenceTransformer, util
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/__init__.py", line 3, in <module>
-    from .datasets import SentencesDataset, ParallelSentencesDataset
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/datasets/__init__.py", line 1, in <module>
-    from .ParallelSentencesDataset import ParallelSentencesDataset
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/datasets/ParallelSentencesDataset.py", line 4, in <module>
-    from .. import SentenceTransformer
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/SentenceTransformer.py", line 22, in <module>
-    from .evaluation import SentenceEvaluator
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/evaluation/__init__.py", line 4, in <module>
-    from .BinaryClassificationEvaluator import BinaryClassificationEvaluator
-  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/evaluation/BinaryClassificationEvaluator.py", line 5, in <module>
-    from sklearn.metrics.pairwise import paired_cosine_distances, paired_euclidean_distances, paired_manhattan_distances
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/sklearn/__init__.py", line 80, in <module>
-    from .base import clone
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/sklearn/base.py", line 21, in <module>
-    from .utils import _IS_32BIT
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 20, in <module>
-    from scipy.sparse import issparse
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/__init__.py", line 155, in <module>
-    from . import fft
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/fft/__init__.py", line 74, in <module>
-    from ._basic import (
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/fft/_basic.py", line 1, in <module>
-    from scipy._lib.uarray import generate_multimethod, Dispatchable
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/_lib/uarray.py", line 28, in <module>
-    from ._uarray import *
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/_lib/_uarray/__init__.py", line 115, in <module>
-    from ._backend import *
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/_lib/_uarray/_backend.py", line 4, in <module>
-    from . import _uarray  # type: ignore
-ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/site-packages/scipy/_lib/_uarray/_uarray.cpython-38-x86_64-linux-gnu.so)
+  File "./experiments/test_ST.py", line 8, in <module>
+    embedding = embedder.encode(corpus)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/SentenceTransformer.py", line 194, in encode
+    out_features = self.forward(features)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/sentence_transformers/models/Transformer.py", line 38, in forward
+    output_states = self.auto_model(**trans_features, return_dict=False)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/roberta/modeling_roberta.py", line 812, in forward
+    encoder_outputs = self.encoder(
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/roberta/modeling_roberta.py", line 508, in forward
+    layer_outputs = layer_module(
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/roberta/modeling_roberta.py", line 395, in forward
+    self_attention_outputs = self.attention(
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/roberta/modeling_roberta.py", line 323, in forward
+    self_outputs = self.self(
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/roberta/modeling_roberta.py", line 187, in forward
+    mixed_query_layer = self.query(hidden_states)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 94, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 1753, in linear
+    return torch._C._nn.linear(input, weight, bias)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasCreate(handle)`

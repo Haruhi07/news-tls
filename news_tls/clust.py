@@ -12,7 +12,52 @@ from scipy import sparse
 from typing import List
 from news_tls import utils, data
 from sentence_transformers import SentenceTransformer, util
-import logging
+import gensim
+from gensim.models import HdpModel, LdaModel
+from gensim.utils import simple_preprocess
+from gensim.parsing.preprocessing import STOPWORDS
+import nltk
+from nltk.stem import WordNetLemmatizer, SnowballStemmer # to perform lemmatization or stemming in our pre-processing
+from nltk.stem.porter import *
+
+
+class TopicModeller():
+    def __init__(self):
+        self.lemmatizer = WordNetLemmatizer()
+
+    def preprocess(self, collection):
+        articles = list(collection.articles())
+        texts = ['{} {}'.format(a.title, a.text) for a in articles]
+        result = []
+        for text in texts:
+            tmp = []
+            for token in gensim.utils.simple_preprocess(text):
+                if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3:
+                    tmp.append(self.lemmatizer.lemmatize(token, 'v'))
+            result.append(tmp)
+        return result
+
+    def LDA(self, collection):
+        texts = self.preprocess(collection)
+        dictionary = gensim.corpora.Dictionary(texts)
+        bow_corpus = [dictionary.doc2bow(text) for text in texts]
+        lda_model = LdaModel(bow_corpus,
+                             num_topics=20,
+                             id2word=dictionary,
+                             passes=4,
+        )
+        return lda_model
+
+    def HDP(self, collection):
+        texts = self.preprocess(collection)
+        dictionary = gensim.corpora.Dictionary(texts)
+        bow_corpus = [dictionary.doc2bow(text) for text in texts]
+        hdp_model = HdpModel(bow_corpus,
+                             id2word=dictionary
+                    )
+        return hdp_model
+
+################################# Timeline Generator ###################################
 
 class ClusteringTimelineGenerator():
     def __init__(self,
@@ -38,17 +83,49 @@ class ClusteringTimelineGenerator():
                 input_titles=False,
                 output_titles=False,
                 output_body_sents=True):
-
+        #Topic Model here
+        print('lda topics...')
+        lda_model = TopicModeller().LDA(collection)
+        lda_topics = lda_model.print_topics()
+        for it in lda_topics:
+            print(it)
+        print('hdp topics...')
+        hdp_model = TopicModeller().HDP(collection)
+        hdp_topics = hdp_model.print_topics()
+        for it in hdp_topics:
+            print(it)
         print('clustering articles...')
-        # word embedding
+
+        # word embedding & cluster
         vectorizer = None
         embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
         clusters = self.clusterer.cluster(collection, None, embedder)
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
         clusters_num = len(clusters)
-        #LDA here
 
+        # calculate similarities between clusters and topics weighted by words
+        topics = lda_topics
+        centroid_list = [c.centroid for c in clusters]
+        weighted_sim = np.zeros((len(topics), clusters_num))
+        for j, topic in topics:
+            tmp = topic.split('+')
+            v_list = []
+            w_list = []
+            for t in tmp:
+                v, w = t.replace('\'', '').replace('\"', '').strip().split('*')
+                v_list.append(v)
+                w_list.append(w)
+            v_list = np.array(v_list, dtype=float)
+            w_list = embedder.encode(w_list)
+            unweighted_centroid_word_sim = cosine_similarity(centroid_list, w_list)
+            weighted_sim[j] = np.matmul(unweighted_centroid_word_sim, v_list)
+
+        weighted_sim = weighted_sim.transpose()
+        print('weighted similarity between topics and clusters...')
+        print(weighted_sim)
+
+        # assign dates
         print('assigning cluster times...')
         for c in clusters:
             c.time = c.most_mentioned_time()
@@ -398,8 +475,9 @@ class AffinityPropagationClusterer(Clusterer):
         labels = af.labels_
 
         if labels[0] == -1:
+            print('cosine')
             S = calculate_similarity('cosine')
-            af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+            af = AffinityPropagation(preference=-50, affinity='precomputed', random_state=None).fit(S)
             cluster_centers = af.cluster_centers_indices_
             labels = af.labels_
 

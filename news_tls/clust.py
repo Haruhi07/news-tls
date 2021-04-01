@@ -17,6 +17,7 @@ from gensim.models import HdpModel, LdaModel
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import STOPWORDS
 import nltk
+nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer, SnowballStemmer # to perform lemmatization or stemming in our pre-processing
 from nltk.stem.porter import *
 

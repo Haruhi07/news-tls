@@ -1,34 +1,12 @@
-Can't locate LWP/UserAgent.pm in @INC (@INC contains: /home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5 /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/XML/DOM.pm line 4270.
-BEGIN failed--compilation aborted at /home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/XML/DOM.pm line 4270.
-Compilation failed in require at /home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/ROUGE-1.5.5.pl line 177.
-BEGIN failed--compilation aborted at /home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/ROUGE-1.5.5.pl line 177.
-Rouge returned a non-zero error code. Output was: 
-BEGIN OUTPUT 
-b''
-END OUTPUT
+[nltk_data] Downloading package wordnet to /home/hs20307/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
 Traceback (most recent call last):
   File "./experiments/evaluate.py", line 207, in <module>
     main(parser.parse_args())
   File "./experiments/evaluate.py", line 197, in main
     evaluate(system, dataset, args.output, trunc_timelines=False, time_span_extension=0)
-  File "./experiments/evaluate.py", line 129, in evaluate
-    rouge_scores = get_scores(
-  File "./experiments/evaluate.py", line 22, in get_scores
-    return evaluator.evaluate_align_date_content_costs_many_to_one(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/tilse/evaluation/rouge.py", line 262, in evaluate_align_date_content_costs_many_to_one
-    return self._evaluate_per_day_mapping_micro(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/tilse/evaluation/rouge.py", line 336, in _evaluate_per_day_mapping_micro
-    scores = self._get_rouge_counts(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/tilse/evaluation/rouge.py", line 495, in _get_rouge_counts
-    temp_scores = self.rouge.score_summary(pred, ref)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/pyrouge/rouge.py", line 88, in score_summary
-    raise e
-  File "/home/hs20307/.local/lib/python3.8/site-packages/pyrouge/rouge.py", line 80, in score_summary
-    output = self._run_rouge()
-  File "/home/hs20307/.local/lib/python3.8/site-packages/pyrouge/rouge.py", line 134, in _run_rouge
-    return check_output([self._rouge_bin] + options)
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/subprocess.py", line 411, in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-  File "/sw/lang/anaconda.3.8.5-2021-AM/lib/python3.8/subprocess.py", line 512, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['/home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/ROUGE-1.5.5.pl', '-e', '/home/hs20307/.local/lib/python3.8/site-packages/pyrouge/tools/ROUGE-1.5.5/data', '-a', '-n', '2', '-x', '-f', 'A', '-d', '-m', '-s', '-t', '2', '/var/tmp/pbs.1211404.bp1/tmp0x6e5vvx/settings.xml']' returned non-zero exit status 2.
+  File "./experiments/evaluate.py", line 113, in evaluate
+    pred_timeline_, n_clusters = tls_model.predict(
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 137, in predict
+    row_sum = sum(v[topic_id])
+TypeError: unsupported operand type(s) for +: 'int' and 'str'

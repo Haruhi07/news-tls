@@ -133,7 +133,7 @@ class ClusteringTimelineGenerator():
             return ret
 
         v, w = get_topic_words()
-        n_topics = len(v)
+        n_topics = v.shape[0]
         for topic_id in range(n_topics):
             row_sum = sum(v[topic_id])
             for word_id in range(len(v[topic_id])):

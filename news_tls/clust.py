@@ -107,18 +107,18 @@ class ClusteringTimelineGenerator():
         topic_model = lda_model
         def get_topic_words():
             topics = topic_model.print_topics()
-            v = []
-            w = []
+            v_list = []
+            w_list = []
             for i, topic in topics:
                 terms = topic.split('+')
-                v_list = []
-                w_list = []
+                tmp_v = []
+                tmp_w = []
                 for term in terms:
                     v, w = term.replace('\'', '').replace('\"', '').strip().split('*')
-                    v_list.append(v)
-                    w_list.append(w)
-                v.append(v_list)
-                w.append(w_list)
+                    tmp_v.append(v)
+                    tmp_w.append(w)
+                v_list.append(tmp_v)
+                w_list.append(tmp_w)
             return v, w
 
         def make_vocab(topic_words):

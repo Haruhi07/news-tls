@@ -164,7 +164,7 @@ class ClusteringTimelineGenerator():
 
         for t in vocab:
             t_index = vocab[t]
-            df = document_frequency(term_topic_matrix, t_index)
+            df = document_frequency(t_index)
 
             for d in range(n_topics):
                 tf = term_topic_matrix[d, t_index]

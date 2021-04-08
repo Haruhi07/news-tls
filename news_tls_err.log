@@ -7,8 +7,6 @@ Traceback (most recent call last):
     evaluate(system, dataset, args.output, trunc_timelines=False, time_span_extension=0)
   File "./experiments/evaluate.py", line 113, in evaluate
     pred_timeline_, n_clusters = tls_model.predict(
-  File "/home/hs20307/news-tls/news_tls/clust.py", line 150, in predict
-    term_topic_matrix = count_word()
-  File "/home/hs20307/news-tls/news_tls/clust.py", line 144, in count_word
-    ret = np.zeros((len(n_topics), len(n_vocab)))
-TypeError: object of type 'int' has no len()
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 167, in predict
+    df = document_frequency(term_topic_matrix, t_index)
+TypeError: document_frequency() takes 1 positional argument but 2 were given

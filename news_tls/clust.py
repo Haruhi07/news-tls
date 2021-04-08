@@ -1,7 +1,5 @@
 import numpy as np
 import datetime
-import itertools
-import random
 import collections
 import markov_clustering as mc
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -105,7 +103,87 @@ class ClusteringTimelineGenerator():
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
         clusters_num = len(clusters)
 
-        # calculate similarities between clusters and topics weighted by words
+        # calculate tfidf for all topics
+        topic_model = lda_model
+        def get_topic_words():
+            topics = topic_model.print_topics()
+            v = []
+            w = []
+            for i, topic in topics:
+                terms = topic.split('+')
+                v_list = []
+                w_list = []
+                for term in terms:
+                    v, w = term.replace('\'', '').replace('\"', '').strip().split('*')
+                    v_list.append(v)
+                    w_list.append(w)
+                v.append(v_list)
+                w.append(w_list)
+            return v, w
+
+        def make_vocab(topic_words):
+            ret = dict()
+            for topic in topic_words:
+                for word in topic:
+                    if word in ret.keys():
+                        continue
+                    idx = len(ret)
+                    ret[word] = idx
+            return ret
+
+        v, w = get_topic_words()
+        n_topics = len(v)
+        for topic_id in range(n_topics):
+            row_sum = sum(v[topic_id])
+            for word_id in range(len(v[topic_id])):
+                v[topic_id][word_id] = v[topic_id][word_id] / row_sum
+        vocab = make_vocab(w)
+        n_vocab = len(vocab)
+
+        def count_word():
+            ret = np.zeros((len(n_topics), len(n_vocab)))
+            for topic_id in range(n_topics):
+                for word_id, word in enumerate(w[topic_id]):
+                    ret[topic_id][vocab[word]] = v[topic_id][word_id]
+            return ret
+
+        term_topic_matrix = count_word()
+
+        def document_frequency(term_index):
+            df = 0
+            for d in range(n_topics):
+                if term_topic_matrix[d, term_index] != 0:
+                    df = df + 1
+            return df
+
+        def inverse_document_frequency(df):
+            idf = np.log((n_topics + 1) / (df + 1)) + 1
+            return idf
+
+        tfidf_matrix = np.zeros((n_topics, n_vocab))
+
+        for t in vocab:
+            t_index = vocab[t]
+            df = document_frequency(term_topic_matrix, t_index)
+
+            for d in range(n_topics):
+                tf = term_topic_matrix[d, t_index]
+                idf = inverse_document_frequency(df)
+                tfidf_matrix[d, t_index] = tf * idf
+
+        for d in range(n_topics):
+            norm = np.sum(tfidf_matrix[d, :] ** 2)
+            norm = np.sqrt(norm)
+            tfidf_matrix[d, :] = tfidf_matrix[d, :] / norm
+
+        keywords = []
+        for topic_id in range(n_topics):
+            row = np.array(tfidf_matrix[topic_id, :])
+            max_id = row.argsort()[-3:][::-1]
+            tmp_word = [vocab.keys()[id] for id in max_id]
+            keywords.append(tmp_word)
+        print(keywords)
+
         topics = lda_topics
         centroid_list = [c.centroid for c in clusters]
         weighted_sim = np.zeros((len(topics), clusters_num))

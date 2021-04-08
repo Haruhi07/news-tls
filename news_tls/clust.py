@@ -141,7 +141,7 @@ class ClusteringTimelineGenerator():
         n_vocab = len(vocab)
 
         def count_word():
-            ret = np.zeros((len(n_topics), len(n_vocab)))
+            ret = np.zeros((n_topics, n_vocab))
             for topic_id in range(n_topics):
                 for word_id, word in enumerate(w[topic_id]):
                     ret[topic_id][vocab[word]] = v[topic_id][word_id]

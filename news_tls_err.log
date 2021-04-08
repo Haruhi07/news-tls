@@ -8,5 +8,5 @@ Traceback (most recent call last):
   File "./experiments/evaluate.py", line 113, in evaluate
     pred_timeline_, n_clusters = tls_model.predict(
   File "/home/hs20307/news-tls/news_tls/clust.py", line 136, in predict
-    n_topics = len(v)
-TypeError: len() of unsized object
+    n_topics = v.shape[0]
+IndexError: tuple index out of range

@@ -7,6 +7,8 @@ Traceback (most recent call last):
     evaluate(system, dataset, args.output, trunc_timelines=False, time_span_extension=0)
   File "./experiments/evaluate.py", line 113, in evaluate
     pred_timeline_, n_clusters = tls_model.predict(
-  File "/home/hs20307/news-tls/news_tls/clust.py", line 167, in predict
-    df = document_frequency(term_topic_matrix, t_index)
-TypeError: document_frequency() takes 1 positional argument but 2 were given
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 183, in predict
+    tmp_word = [vocab.keys()[id] for id in max_id]
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 183, in <listcomp>
+    tmp_word = [vocab.keys()[id] for id in max_id]
+TypeError: 'dict_keys' object is not subscriptable

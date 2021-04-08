@@ -117,9 +117,8 @@ class ClusteringTimelineGenerator():
                     v, w = term.replace('\'', '').replace('\"', '').strip().split('*')
                     tmp_v.append(v)
                     tmp_w.append(w)
-                v_list.append(tmp_v)
+                v_list.append(np.array(tmp_v))
                 w_list.append(tmp_w)
-            v = np.ndarray(v, dtype=float)
             return v, w
 
         def make_vocab(topic_words):

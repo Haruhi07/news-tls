@@ -7,6 +7,8 @@ Traceback (most recent call last):
     evaluate(system, dataset, args.output, trunc_timelines=False, time_span_extension=0)
   File "./experiments/evaluate.py", line 113, in evaluate
     pred_timeline_, n_clusters = tls_model.predict(
-  File "/home/hs20307/news-tls/news_tls/clust.py", line 136, in predict
-    n_topics = v.shape[0]
-IndexError: tuple index out of range
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 135, in predict
+    v, w = get_topic_words()
+  File "/home/hs20307/news-tls/news_tls/clust.py", line 122, in get_topic_words
+    v = np.ndarray(v, dtype=float)
+TypeError: 'str' object cannot be interpreted as an integer

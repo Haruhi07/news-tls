@@ -176,11 +176,12 @@ class ClusteringTimelineGenerator():
             norm = np.sqrt(norm)
             tfidf_matrix[d, :] = tfidf_matrix[d, :] / norm
 
+        vocab_list = list(vocab.keys())
         keywords = []
         for topic_id in range(n_topics):
             row = np.array(tfidf_matrix[topic_id, :])
             max_id = row.argsort()[-3:][::-1]
-            tmp_word = [vocab.keys()[id] for id in max_id]
+            tmp_word = [vocab_list[id] for id in max_id]
             keywords.append(tmp_word)
         print(keywords)
 

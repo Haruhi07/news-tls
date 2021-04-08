@@ -71,7 +71,26 @@ times: 20 articles: 218 clusters: 11
 154 [142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162]
 177 [163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 186, 188, 193, 194, 195, 196, 197, 198, 199, 200]
 205 [185, 187, 189, 190, 191, 192, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217]
-[['thursday', 'say', 'square'], ['egypt', 'people', 'know'], ['want', 'protesters', 'police'], ['levy', 'chandra', 'time'], ['reddit', 'know', 'government'], ['crowley', 'egypt', 'protest'], ['internet', 'like', 'tantawi'], ['think', 'know', 'want'], ['go', 'state', 'think'], ['challenger', 'update', 'say'], ['mubarak', 'say', 'military'], ['pleitgen', 'frederik', 'update'], ['cairo', 'mubarak', 'square'], ['crowley', 'service', 'think'], ['update', 'tunisia', 'cairo'], ['egypt', 'protest', 'say'], ['police', 'say', 'right'], ['pirate', 'crew', 'say'], ['say', 'shoot', 'wednesday'], ['people', 'know', 'think']]
+[['thursday', 'say', 'square'],
+['egypt', 'people', 'know'],
+['want', 'protesters', 'police'],
+['levy', 'chandra', 'time'],
+['reddit', 'know', 'government'],
+['crowley', 'egypt', 'protest'],
+['internet', 'like', 'tantawi'],
+['think', 'know', 'want'],
+['go', 'state', 'think'],
+['challenger', 'update', 'say'],
+['mubarak', 'say', 'military'],
+['pleitgen', 'frederik', 'update'],
+['cairo', 'mubarak', 'square'],
+['crowley', 'service', 'think'],
+['update', 'tunisia', 'cairo'],
+['egypt', 'protest', 'say'],
+['police', 'say', 'right'],
+['pirate', 'crew', 'say'],
+['say', 'shoot', 'wednesday'],
+['people', 'know', 'think']]
 weighted similarity between topics and clusters...
 [[ 0.00584197  0.00125237  0.00509861 -0.0044121   0.00217483  0.00475028
    0.00200569 -0.00302219  0.0006384   0.0032099   0.01019759 -0.0025936

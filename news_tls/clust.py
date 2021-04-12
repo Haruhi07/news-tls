@@ -8,7 +8,7 @@ from sklearn.cluster import AffinityPropagation, AgglomerativeClustering
 from sklearn.exceptions import ConvergenceWarning
 from scipy import sparse
 from typing import List
-from news_tls import utils, data
+from news_tls import utils, data, summarizers
 from sentence_transformers import SentenceTransformer, util
 import gensim
 from gensim.models import HdpModel, LdaModel
@@ -67,9 +67,9 @@ class ClusteringTimelineGenerator():
                  key_to_model=None,
                  unique_dates=True):
 
-        self.clusterer = clusterer or TemporalMarkovClusterer(max_days=1)
-        self.cluster_ranker = cluster_ranker or ClusterDateMentionCountRanker()
-        self.summarizer = summarizer or summarizers.CentroidOpt()
+        self.clusterer = clusterer
+        self.cluster_ranker = cluster_ranker
+        self.summarizer = summarizer
         self.key_to_model = key_to_model
         self.unique_dates = unique_dates
         self.clip_sents = clip_sents
@@ -275,8 +275,8 @@ class ClusteringTimelineGenerator():
     def _select_sents_from_cluster(self, cluster):
         sents = []
         for a in cluster.articles:
-            #for s in a.sentences[:self.clip_sents]:
-            for s in a.sentences:
+            for s in a.sentences[:self.clip_sents]:
+            #for s in a.sentences:
                 sents.append(s)
         return sents
 

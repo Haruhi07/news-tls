@@ -19,13 +19,14 @@ class Pegasus(Summarizer):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     def summarize(self, sents, k, vectorizer, embedder, filters=None):
-        src_text = sents
+        src_text = [s.raw for s in sents]
         tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
         model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
         batch = tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
         translated = model.generate(**batch)
         tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
         print(tgt_text)
+        return tgt_text
 
 class TextRank(Summarizer):
 

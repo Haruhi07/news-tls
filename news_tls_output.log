@@ -1,52 +1,52 @@
  
  University of Bristol ACRC HPC Bluepebble Service
  -------------------------------------------------
- Job news_tls, jobid 1354053.bp1, username hs20307 - started execution at 19:57:25 Mon 12/04/21 on node bp1-gpu00001.data.bp.acrc.priv
+ Job news_tls, jobid 1354061.bp1, username hs20307 - started execution at 20:19:00 Mon 12/04/21 on node bp1-gpu00001.data.bp.acrc.priv
  
 topic 1/17: EgyptianProtest_cnn, ref timeline 1/1
 name = EgyptianProtest_cnn start = 2011-01-25 00:00:00 end = 2011-02-13 00:00:00
 lda topics...
-(0, '0.017*"say" + 0.013*"egypt" + 0.010*"people" + 0.009*"mubarak" + 0.009*"president" + 0.009*"government" + 0.007*"state" + 0.007*"egyptian" + 0.007*"cairo" + 0.007*"protest"')
-(1, '0.020*"say" + 0.012*"mubarak" + 0.012*"egypt" + 0.012*"people" + 0.010*"protest" + 0.010*"president" + 0.010*"government" + 0.009*"egyptian" + 0.009*"protesters" + 0.006*"right"')
-(2, '0.013*"people" + 0.013*"say" + 0.007*"cairo" + 0.007*"egypt" + 0.006*"mubarak" + 0.006*"update" + 0.006*"report" + 0.005*"state" + 0.004*"government" + 0.004*"wednesday"')
-(3, '0.014*"think" + 0.013*"zakaria" + 0.012*"people" + 0.008*"go" + 0.008*"egypt" + 0.007*"know" + 0.007*"state" + 0.006*"bank" + 0.006*"look" + 0.005*"need"')
-(4, '0.010*"say" + 0.009*"protest" + 0.009*"president" + 0.006*"people" + 0.006*"egypt" + 0.006*"levy" + 0.005*"right" + 0.005*"chandra" + 0.005*"time" + 0.004*"state"')
-(5, '0.010*"say" + 0.010*"people" + 0.007*"egypt" + 0.007*"february" + 0.005*"like" + 0.005*"report" + 0.005*"state" + 0.005*"believe" + 0.005*"service" + 0.005*"mubarak"')
-(6, '0.015*"say" + 0.012*"egypt" + 0.010*"journalists" + 0.009*"think" + 0.009*"people" + 0.007*"go" + 0.007*"egyptian" + 0.007*"mubarak" + 0.006*"state" + 0.006*"news"')
-(7, '0.022*"pleitgen" + 0.022*"frederik" + 0.021*"update" + 0.016*"report" + 0.007*"german" + 0.006*"say" + 0.005*"people" + 0.005*"security" + 0.005*"egypt" + 0.004*"government"')
-(8, '0.017*"say" + 0.010*"egypt" + 0.008*"protest" + 0.007*"bank" + 0.006*"mubarak" + 0.006*"president" + 0.005*"cairo" + 0.005*"egyptian" + 0.005*"want" + 0.005*"sunday"')
-(9, '0.019*"egypt" + 0.015*"mubarak" + 0.011*"people" + 0.010*"say" + 0.008*"egyptian" + 0.007*"president" + 0.006*"protest" + 0.006*"think" + 0.006*"government" + 0.006*"go"')
-(10, '0.018*"say" + 0.010*"mubarak" + 0.010*"president" + 0.009*"government" + 0.008*"egypt" + 0.007*"state" + 0.007*"egyptian" + 0.007*"people" + 0.006*"square" + 0.005*"cairo"')
-(11, '0.021*"people" + 0.013*"know" + 0.013*"go" + 0.012*"egypt" + 0.012*"mubarak" + 0.010*"think" + 0.009*"want" + 0.009*"president" + 0.009*"right" + 0.008*"say"')
-(12, '0.018*"say" + 0.015*"egypt" + 0.007*"government" + 0.007*"people" + 0.006*"hezbollah" + 0.005*"mubarak" + 0.005*"president" + 0.005*"iran" + 0.004*"protesters" + 0.004*"force"')
-(13, '0.013*"think" + 0.013*"say" + 0.011*"know" + 0.009*"kurtz" + 0.009*"people" + 0.008*"like" + 0.007*"go" + 0.007*"story" + 0.007*"time" + 0.006*"post"')
-(14, '0.017*"egypt" + 0.016*"people" + 0.011*"mubarak" + 0.011*"go" + 0.010*"say" + 0.010*"president" + 0.009*"think" + 0.008*"know" + 0.008*"right" + 0.007*"government"')
-(15, '0.016*"mubarak" + 0.015*"say" + 0.015*"egypt" + 0.012*"egyptian" + 0.012*"president" + 0.010*"people" + 0.010*"cairo" + 0.009*"government" + 0.008*"state" + 0.008*"january"')
-(16, '0.018*"say" + 0.014*"egypt" + 0.012*"cairo" + 0.012*"mubarak" + 0.011*"president" + 0.008*"egyptian" + 0.008*"state" + 0.007*"square" + 0.007*"people" + 0.006*"report"')
-(17, '0.007*"say" + 0.006*"mubarak" + 0.005*"egypt" + 0.005*"people" + 0.004*"state" + 0.003*"go" + 0.003*"cairo" + 0.003*"president" + 0.003*"think" + 0.003*"want"')
-(18, '0.006*"egypt" + 0.005*"say" + 0.004*"mubarak" + 0.004*"people" + 0.004*"president" + 0.004*"think" + 0.004*"go" + 0.003*"military" + 0.003*"time" + 0.003*"egyptian"')
-(19, '0.009*"people" + 0.009*"reddit" + 0.008*"tantawi" + 0.007*"site" + 0.007*"egypt" + 0.006*"cable" + 0.006*"mubarak" + 0.005*"military" + 0.005*"egyptian" + 0.005*"know"')
+(0, '0.013*"people" + 0.009*"say" + 0.006*"egypt" + 0.006*"report" + 0.005*"february" + 0.005*"want" + 0.004*"need" + 0.004*"like" + 0.004*"right" + 0.004*"government"')
+(1, '0.024*"say" + 0.015*"egypt" + 0.015*"mubarak" + 0.012*"people" + 0.011*"president" + 0.011*"government" + 0.010*"cairo" + 0.009*"egyptian" + 0.009*"protesters" + 0.008*"protest"')
+(2, '0.011*"levy" + 0.010*"chandra" + 0.008*"guandique" + 0.005*"ingmar" + 0.004*"jury" + 0.003*"jog" + 0.003*"say" + 0.003*"trail" + 0.003*"intern" + 0.003*"haines"')
+(3, '0.011*"people" + 0.008*"egypt" + 0.008*"say" + 0.006*"mubarak" + 0.006*"go" + 0.005*"egyptian" + 0.005*"president" + 0.005*"protest" + 0.004*"think" + 0.004*"know"')
+(4, '0.008*"egypt" + 0.008*"president" + 0.005*"people" + 0.005*"say" + 0.005*"mubarak" + 0.005*"egyptian" + 0.004*"state" + 0.004*"go" + 0.004*"government" + 0.004*"cairo"')
+(5, '0.021*"egypt" + 0.011*"people" + 0.008*"say" + 0.007*"ghonim" + 0.006*"mubarak" + 0.006*"protest" + 0.006*"tunisia" + 0.005*"president" + 0.005*"egyptians" + 0.005*"egyptian"')
+(6, '0.011*"mubarak" + 0.009*"egypt" + 0.006*"president" + 0.005*"people" + 0.005*"say" + 0.005*"cairo" + 0.004*"egyptian" + 0.004*"protesters" + 0.004*"thursday" + 0.004*"go"')
+(7, '0.017*"egypt" + 0.016*"mubarak" + 0.014*"president" + 0.013*"say" + 0.010*"people" + 0.008*"egyptian" + 0.007*"state" + 0.006*"military" + 0.005*"government" + 0.005*"country"')
+(8, '0.017*"egypt" + 0.015*"say" + 0.010*"mubarak" + 0.009*"people" + 0.008*"protest" + 0.008*"president" + 0.007*"government" + 0.007*"egyptian" + 0.006*"protesters" + 0.006*"right"')
+(9, '0.021*"cairo" + 0.019*"say" + 0.015*"update" + 0.015*"egypt" + 0.013*"egyptian" + 0.012*"mubarak" + 0.009*"president" + 0.008*"government" + 0.008*"square" + 0.008*"people"')
+(10, '0.012*"think" + 0.010*"know" + 0.009*"say" + 0.009*"kurtz" + 0.008*"people" + 0.008*"president" + 0.008*"egypt" + 0.008*"like" + 0.008*"mubarak" + 0.007*"go"')
+(11, '0.021*"people" + 0.015*"egypt" + 0.014*"go" + 0.013*"know" + 0.013*"think" + 0.011*"mubarak" + 0.010*"right" + 0.009*"want" + 0.008*"president" + 0.008*"egyptian"')
+(12, '0.007*"egypt" + 0.006*"say" + 0.005*"people" + 0.005*"government" + 0.004*"president" + 0.004*"think" + 0.004*"mubarak" + 0.004*"go" + 0.004*"cairo" + 0.003*"state"')
+(13, '0.021*"frederik" + 0.021*"pleitgen" + 0.021*"update" + 0.016*"report" + 0.008*"say" + 0.007*"german" + 0.006*"people" + 0.005*"egypt" + 0.004*"government" + 0.004*"germany"')
+(14, '0.017*"mubarak" + 0.015*"egypt" + 0.014*"people" + 0.010*"president" + 0.008*"say" + 0.008*"egyptian" + 0.007*"need" + 0.007*"think" + 0.007*"government" + 0.007*"democracy"')
+(15, '0.015*"say" + 0.010*"president" + 0.006*"egypt" + 0.006*"state" + 0.005*"wednesday" + 0.005*"people" + 0.005*"government" + 0.004*"update" + 0.004*"country" + 0.004*"police"')
+(16, '0.014*"egypt" + 0.012*"people" + 0.011*"think" + 0.010*"say" + 0.009*"go" + 0.008*"state" + 0.008*"mubarak" + 0.007*"know" + 0.007*"president" + 0.006*"cairo"')
+(17, '0.012*"egypt" + 0.012*"people" + 0.010*"say" + 0.008*"go" + 0.007*"government" + 0.007*"president" + 0.005*"protest" + 0.005*"want" + 0.005*"crowley" + 0.005*"know"')
+(18, '0.010*"people" + 0.008*"say" + 0.008*"allah" + 0.008*"egypt" + 0.006*"world" + 0.006*"government" + 0.005*"muslim" + 0.005*"february" + 0.004*"islam" + 0.004*"state"')
+(19, '0.014*"egypt" + 0.010*"egyptian" + 0.008*"say" + 0.008*"mubarak" + 0.007*"president" + 0.006*"regime" + 0.005*"january" + 0.005*"people" + 0.005*"protest" + 0.005*"ghonim"')
 hdp topics...
-(0, '0.010*people + 0.009*say + 0.008*egypt + 0.006*mubarak + 0.005*go + 0.005*president + 0.005*cairo + 0.004*egyptian + 0.004*right + 0.004*state')
-(1, '0.013*say + 0.010*egypt + 0.010*cairo + 0.009*mubarak + 0.008*president + 0.007*government + 0.007*egyptian + 0.006*people + 0.006*update + 0.005*protesters')
-(2, '0.010*people + 0.009*think + 0.007*egypt + 0.007*go + 0.007*know + 0.005*say + 0.005*look + 0.005*president + 0.005*mubarak + 0.004*want')
-(3, '0.008*egypt + 0.006*people + 0.006*say + 0.006*mubarak + 0.005*president + 0.004*egyptian + 0.004*government + 0.004*go + 0.003*right + 0.003*think')
-(4, '0.006*say + 0.005*egypt + 0.005*mubarak + 0.005*people + 0.003*allah + 0.003*president + 0.003*blitzer + 0.003*go + 0.003*egyptian + 0.003*government')
-(5, '0.007*egypt + 0.007*january + 0.006*people + 0.005*think + 0.005*need + 0.005*mubarak + 0.004*world + 0.004*president + 0.004*right + 0.003*country')
-(6, '0.009*people + 0.006*egypt + 0.005*know + 0.005*want + 0.004*think + 0.004*say + 0.004*go + 0.004*egyptian + 0.003*tell + 0.003*need')
-(7, '0.008*think + 0.006*kurtz + 0.005*know + 0.005*people + 0.005*story + 0.005*go + 0.004*say + 0.004*like + 0.004*time + 0.004*egypt')
-(8, '0.007*egypt + 0.007*people + 0.006*say + 0.006*mubarak + 0.005*president + 0.004*egyptian + 0.004*go + 0.004*cairo + 0.004*right + 0.004*military')
-(9, '0.005*people + 0.005*say + 0.004*kurtz + 0.004*egypt + 0.004*go + 0.003*think + 0.003*like + 0.002*state + 0.002*jazeera + 0.002*right')
-(10, '0.007*mubarak + 0.006*egypt + 0.005*president + 0.005*say + 0.003*people + 0.003*go + 0.003*egyptian + 0.003*state + 0.002*government + 0.002*cairo')
-(11, '0.005*people + 0.005*egypt + 0.004*mubarak + 0.003*say + 0.003*president + 0.003*anderson + 0.003*egyptian + 0.003*cairo + 0.003*square + 0.003*world')
-(12, '0.003*president + 0.003*know + 0.003*tunisia + 0.003*people + 0.003*phillips + 0.003*right + 0.003*update + 0.002*egypt + 0.002*go + 0.002*say')
-(13, '0.007*egypt + 0.005*people + 0.004*president + 0.004*mubarak + 0.003*go + 0.003*say + 0.003*right + 0.003*government + 0.003*time + 0.002*hosni')
-(14, '0.005*say + 0.005*crowley + 0.004*egypt + 0.004*people + 0.004*think + 0.004*mubarak + 0.003*egyptian + 0.003*right + 0.003*president + 0.003*go')
-(15, '0.008*people + 0.005*egypt + 0.004*mubarak + 0.004*go + 0.004*military + 0.004*think + 0.003*know + 0.003*right + 0.003*egyptian + 0.003*say')
-(16, '0.006*egypt + 0.006*say + 0.005*cairo + 0.005*mubarak + 0.004*state + 0.004*president + 0.003*monday + 0.003*update + 0.002*people + 0.002*tell')
-(17, '0.004*blitzer + 0.004*president + 0.003*egypt + 0.003*right + 0.003*mubarak + 0.003*crowley + 0.003*go + 0.002*say + 0.002*want + 0.002*know')
-(18, '0.005*cooper + 0.005*people + 0.005*go + 0.004*know + 0.003*mubarak + 0.002*want + 0.002*country + 0.002*today + 0.002*cairo + 0.002*think')
-(19, '0.004*people + 0.003*say + 0.002*thank + 0.002*believe + 0.002*abuse + 0.002*report + 0.002*february + 0.002*like + 0.002*actually + 0.002*game')
+(0, '0.009*people + 0.008*egypt + 0.008*think + 0.008*say + 0.006*go + 0.006*mubarak + 0.005*know + 0.005*president + 0.004*like + 0.004*time')
+(1, '0.010*people + 0.009*egypt + 0.006*president + 0.006*mubarak + 0.006*say + 0.005*go + 0.005*think + 0.005*january + 0.005*egyptian + 0.005*right')
+(2, '0.012*egypt + 0.011*people + 0.009*mubarak + 0.008*go + 0.007*president + 0.007*right + 0.006*say + 0.005*want + 0.005*know + 0.004*government')
+(3, '0.006*egypt + 0.006*say + 0.004*mubarak + 0.004*people + 0.004*egyptian + 0.003*allah + 0.003*state + 0.003*president + 0.003*government + 0.003*cairo')
+(4, '0.007*egypt + 0.006*mubarak + 0.006*people + 0.005*president + 0.004*go + 0.003*think + 0.003*say + 0.003*anderson + 0.003*know + 0.003*cairo')
+(5, '0.008*think + 0.006*go + 0.006*people + 0.005*egypt + 0.005*crowley + 0.004*know + 0.003*say + 0.003*time + 0.003*look + 0.003*want')
+(6, '0.006*president + 0.006*egypt + 0.005*people + 0.004*mubarak + 0.004*say + 0.004*blitzer + 0.004*egyptian + 0.003*shoukry + 0.003*think + 0.003*state')
+(7, '0.007*say + 0.006*mubarak + 0.006*cairo + 0.006*president + 0.005*egypt + 0.005*update + 0.005*egyptian + 0.003*government + 0.003*state + 0.003*hosni')
+(8, '0.006*people + 0.006*cairo + 0.004*go + 0.004*mubarak + 0.004*cooper + 0.004*know + 0.004*say + 0.003*friday + 0.003*update + 0.003*egypt')
+(9, '0.007*egypt + 0.005*mubarak + 0.005*say + 0.004*protest + 0.003*president + 0.003*people + 0.003*government + 0.003*protesters + 0.002*egyptian + 0.002*state')
+(10, '0.005*president + 0.004*egypt + 0.004*mubarak + 0.004*say + 0.003*government + 0.003*people + 0.003*protest + 0.003*tunisia + 0.003*egyptian + 0.003*protesters')
+(11, '0.005*say + 0.005*update + 0.005*mubarak + 0.005*cairo + 0.004*president + 0.004*egypt + 0.003*state + 0.003*wednesday + 0.003*people + 0.003*report')
+(12, '0.008*people + 0.005*egypt + 0.004*mubarak + 0.004*go + 0.004*military + 0.003*think + 0.003*say + 0.003*know + 0.003*right + 0.003*egyptian')
+(13, '0.009*people + 0.006*know + 0.005*egypt + 0.005*go + 0.005*think + 0.004*want + 0.004*right + 0.003*egyptian + 0.003*need + 0.003*hear')
+(14, '0.004*egypt + 0.003*know + 0.003*people + 0.003*phillips + 0.003*go + 0.003*right + 0.002*say + 0.002*come + 0.002*like + 0.002*job')
+(15, '0.004*people + 0.004*anderson + 0.003*say + 0.003*weather + 0.003*go + 0.003*flood + 0.003*government + 0.002*world + 0.002*see + 0.002*president')
+(16, '0.004*people + 0.003*government + 0.003*say + 0.003*egypt + 0.003*mubarak + 0.002*world + 0.002*want + 0.002*egyptian + 0.002*protest + 0.002*country')
+(17, '0.005*think + 0.004*spitzer + 0.004*people + 0.004*boehner + 0.004*know + 0.003*president + 0.003*want + 0.003*look + 0.003*parker + 0.002*go')
+(18, '0.004*say + 0.003*people + 0.003*egypt + 0.002*mubarak + 0.002*country + 0.002*protesters + 0.002*cairo + 0.002*government + 0.002*state + 0.001*report')
+(19, '0.005*crowley + 0.005*egypt + 0.004*people + 0.004*think + 0.003*mubarak + 0.003*say + 0.003*go + 0.003*president + 0.003*right + 0.002*egyptian')
 clustering articles...
 times: 20 articles: 218 clusters: 11
 [ 1  1  0  1  1  1  1  1  1  2  1  2  2  2  1  1  2  1  2  2  1  1  3  3
@@ -71,54 +71,65 @@ times: 20 articles: 218 clusters: 11
 154 [142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162]
 177 [163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 186, 188, 193, 194, 195, 196, 197, 198, 199, 200]
 205 [185, 187, 189, 190, 191, 192, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217]
-[['say', 'protest', 'government'], ['protesters', 'protest', 'say'], ['update', 'report', 'say'], ['zakaria', 'think', 'look'], ['protest', 'levy', 'chandra'], ['february', 'believe', 'service'], ['journalists', 'news', 'think'], ['pleitgen', 'frederik', 'update'], ['bank', 'say', 'protest'], ['egypt', 'mubarak', 'protest'], ['say', 'square', 'government'], ['know', 'go', 'want'], ['hezbollah', 'say', 'iran'], ['kurtz', 'know', 'think'], ['go', 'right', 'know'], ['january', 'egyptian', 'cairo'], ['cairo', 'square', 'say'], ['want', 'say', 'mubarak'], ['military', 'time', 'go'], ['reddit', 'tantawi', 'site']]
+[['report', 'february', 'people'], ['say', 'protesters', 'cairo'], ['levy', 'chandra', 'guandique'], ['people', 'go', 'protest'], ['president', 'state', 'cairo'], ['egypt', 'ghonim', 'tunisia'], ['mubarak', 'thursday', 'protesters'], ['mubarak', 'military', 'egypt'], ['egypt', 'protest', 'right'], ['cairo', 'update', 'square'], ['kurtz', 'think', 'like'], ['know', 'think', 'right'], ['cairo', 'think', 'government'], ['frederik', 'pleitgen', 'update'], ['democracy', 'mubarak', 'need'], ['wednesday', 'say', 'police'], ['think', 'state', 'go'], ['crowley', 'go', 'want'], ['allah', 'world', 'muslim'], ['regime', 'january', 'egyptian']]
 weighted similarity between topics and clusters...
-[[ 0.00696504  0.01010535  0.00186398 -0.0041024  -0.00030327 -0.00072391
-   0.0017709  -0.0052231   0.00400349  0.0071276   0.00407528 -0.00303387
-   0.0047128  -0.00925055  0.00024029  0.00837418  0.00604028  0.00067157
-   0.00030826  0.00042634]
- [ 0.04456439  0.05119897  0.03422151  0.04188293  0.03231978  0.03107045
-   0.04237294  0.04628892  0.03365629  0.04314324  0.04173499  0.05884849
-   0.0366021   0.04892543  0.05408072  0.05196955  0.04802807  0.02007972
-   0.02004069  0.03257035]
- [ 0.00784413  0.01046133  0.00688659  0.00296726  0.00472168  0.00552471
-   0.0058216   0.01117081  0.00620412  0.00649742  0.00688485  0.00661897
-   0.00570207  0.00410031  0.00664156  0.00797678  0.00781352  0.00296054
-   0.00229052  0.0025918 ]
- [ 0.00645835  0.00834986  0.0018814  -0.00438913 -0.00099573 -0.00112
-   0.00161315 -0.00424484  0.00367834  0.0069618   0.00424117 -0.00234967
-   0.00379656 -0.00908746  0.00083311  0.00876875  0.00620286  0.00098076
-   0.00072481 -0.00021214]
- [ 0.01154258  0.0141657   0.00593336  0.0010821   0.00332769  0.00331482
-   0.00657197  0.00290522  0.00767482  0.0118415   0.0092575   0.00525271
-   0.00800846 -0.00174413  0.00756568  0.01392468  0.01122531  0.00348101
-   0.00335864  0.00381807]
- [ 0.0093591   0.01196005  0.00422703 -0.0015416   0.00101943  0.00137308
-   0.00424106 -0.00135386  0.00667174  0.01023804  0.00726879  0.00302931
-   0.00649463 -0.00498375  0.00522042  0.01246562  0.01007842  0.00274258
-   0.00241057  0.00249598]
- [ 0.00604269  0.00815156  0.00191976 -0.00409946 -0.00097312 -0.00124161
-   0.00142302 -0.00457688  0.00347895  0.00630217  0.00400002 -0.00127197
-   0.00386838 -0.0083567   0.00136746  0.008356    0.00599556  0.00105597
-   0.00051541  0.00030821]
- [ 0.04456439  0.05119897  0.03422151  0.04188293  0.03231978  0.03107045
-   0.04237294  0.04628892  0.03365629  0.04314324  0.04173499  0.05884849
-   0.0366021   0.04892543  0.05408072  0.05196955  0.04802807  0.02007972
-   0.02004069  0.03257035]
- [ 0.01618342  0.01859791  0.01149362  0.00656867  0.00764931  0.00788491
-   0.01168997  0.01478168  0.01186015  0.01531486  0.01403479  0.01231205
-   0.01215552  0.00640707  0.01369743  0.02019761  0.01793802  0.00594297
-   0.00539207  0.00780362]
- [ 0.00842036  0.01104664  0.00383194 -0.0018103   0.00071914  0.00106506
-   0.00363003 -0.00125563  0.00577035  0.00913317  0.00621002  0.00192449
-   0.00602278 -0.00498156  0.00426564  0.01067172  0.00840176  0.00234779
-   0.00189345  0.00151069]
- [ 0.01266193  0.015829    0.00792457  0.00202919  0.00541688  0.00523182
-   0.00790486  0.00886525  0.00851328  0.01121321  0.01052437  0.00625466
-   0.00927562  0.00078095  0.00837755  0.0148583   0.01264405  0.00376329
-   0.00311727  0.00459955]]
+[[-1.37376045e-03  1.22664460e-02 -4.21960212e-03  1.99783207e-03
+   2.53167062e-03  7.45246793e-03  4.69693466e-03  5.39251053e-03
+   9.12832969e-03  7.79673472e-03 -4.10547189e-03 -1.37087937e-03
+   1.17319109e-03 -5.55587893e-03  6.29382890e-03 -9.80301470e-04
+   1.61621340e-04  1.96676739e-04  1.75945560e-03  5.95634561e-03]
+ [ 3.15978410e-02  5.62638643e-02  2.16201168e-02  2.97229141e-02
+   2.46420281e-02  3.48604118e-02  2.49376011e-02  4.78762951e-02
+   4.33245823e-02  5.77193682e-02  4.27270857e-02  6.11700745e-02
+   2.26042854e-02  4.62954485e-02  4.70699774e-02  3.33658903e-02
+   4.53774759e-02  3.80437430e-02  3.19526894e-02  3.14693612e-02]
+ [ 5.46696338e-03  1.11968475e-02  3.21370868e-04  4.01911556e-03
+   3.21233681e-03  4.53936978e-03  3.81682880e-03  6.32456509e-03
+   8.25131423e-03  1.01355055e-02  3.72829650e-03  6.02003312e-03
+   3.25124658e-03  1.12074967e-02  7.22966480e-03  5.88301806e-03
+   5.29439722e-03  5.56816963e-03  3.90788185e-03  4.36560408e-03]
+ [-1.89030586e-03  1.11059298e-02 -3.84294897e-03  1.68217390e-03
+   2.92350092e-03  6.18815633e-03  5.00610562e-03  6.01643310e-03
+   7.75688520e-03  8.70642031e-03 -3.49698534e-03 -8.69481303e-04
+   1.54486407e-03 -4.70392036e-03  6.69385951e-03 -7.71253467e-04
+   7.30589401e-04  4.31939960e-06  1.21183189e-03  5.63464004e-03]
+ [ 2.69053395e-03  1.69099040e-02 -1.48538973e-03  5.30306465e-03
+   5.62928200e-03  9.73828931e-03  7.11201504e-03  1.16810245e-02
+   1.24689612e-02  1.44650571e-02  2.46603573e-03  6.62625986e-03
+   4.24534392e-03  2.76205338e-03  1.22909679e-02  3.83774544e-03
+   6.18118379e-03  4.89242735e-03  4.73500192e-03  8.66233840e-03]
+ [ 7.22705387e-04  1.49965438e-02 -2.88829218e-03  3.90368280e-03
+   4.56492336e-03  8.46175982e-03  6.79512714e-03  9.90227327e-03
+   1.08770857e-02  1.28492402e-02  6.72095971e-04  4.34563994e-03
+   3.05865784e-03 -1.68049596e-03  1.05730341e-02  1.28138367e-03
+   4.20550652e-03  2.44764335e-03  2.50451374e-03  8.02791192e-03]
+ [-1.37113420e-03  1.08353776e-02 -3.71280227e-03  1.45368810e-03
+   2.75350329e-03  5.37716912e-03  4.83485448e-03  5.34039356e-03
+   7.43467658e-03  8.50280394e-03 -2.96606072e-03 -1.87749732e-04
+   1.59709866e-03 -4.97557881e-03  6.40338061e-03 -8.87366029e-04
+   7.75229880e-04  2.37433705e-04  1.29893709e-03  5.13437257e-03]
+ [ 3.15978417e-02  5.62638660e-02  2.16201168e-02  2.97229152e-02
+   2.46420287e-02  3.48604128e-02  2.49376015e-02  4.78762965e-02
+   4.33245838e-02  5.77193694e-02  4.27270866e-02  6.11700761e-02
+   2.26042860e-02  4.62954484e-02  4.70699782e-02  3.33658907e-02
+   4.53774774e-02  3.80437430e-02  3.19526905e-02  3.14693618e-02]
+ [ 6.83525634e-03  2.25716981e-02  2.74358260e-03  8.14344379e-03
+   8.29879142e-03  1.28727651e-02  1.02164139e-02  1.59282663e-02
+   1.62095382e-02  2.33385291e-02  8.09123870e-03  1.34292309e-02
+   6.92949177e-03  1.46295415e-02  1.60293458e-02  8.32804435e-03
+   1.18787729e-02  9.14398931e-03  8.87770293e-03  1.21948303e-02]
+ [ 4.79361128e-04  1.36794578e-02 -3.31978881e-03  3.36370102e-03
+   3.85460240e-03  7.56289413e-03  5.99442656e-03  8.26340253e-03
+   9.90995530e-03  1.05538067e-02 -1.68780534e-04  2.89828154e-03
+   2.75288728e-03 -1.61115637e-03  9.17327984e-03  1.18924349e-03
+   3.35307587e-03  2.23796736e-03  2.68909457e-03  7.22673201e-03]
+ [ 4.59911425e-03  1.80405736e-02 -9.05444175e-05  5.39517774e-03
+   5.78276923e-03  9.24051797e-03  7.06044144e-03  1.15132911e-02
+   1.34460997e-02  1.59620876e-02  2.90931535e-03  7.04615239e-03
+   4.64216847e-03  8.95617413e-03  1.15717118e-02  6.04335300e-03
+   6.78376515e-03  6.09728755e-03  5.98223298e-03  8.88330928e-03]]
 assigning cluster times...
 ranking clusters...
 vectorizing sentences...
 summarization...
-[<news_tls.data.Sentence object at 0x2b6347881760>, <news_tls.data.Sentence object at 0x2b6347881ee0>, <news_tls.data.Sentence object at 0x2b632ca9c610>, <news_tls.data.Sentence object at 0x2b632ca9cca0>, <news_tls.data.Sentence object at 0x2b632ca92400>, <news_tls.data.Sentence object at 0x2b632ca86ee0>, <news_tls.data.Sentence object at 0x2b632ca7c430>, <news_tls.data.Sentence object at 0x2b632ca7c6a0>, <news_tls.data.Sentence object at 0x2b632ca7cc10>, <news_tls.data.Sentence object at 0x2b632ca7cc40>, <news_tls.data.Sentence object at 0x2b632cd758e0>, <news_tls.data.Sentence object at 0x2b632cd75880>, <news_tls.data.Sentence object at 0x2b632cd75b20>, <news_tls.data.Sentence object at 0x2b632cd75dc0>, <news_tls.data.Sentence object at 0x2b632afb54c0>, <news_tls.data.Sentence object at 0x2b63408e7f70>, <news_tls.data.Sentence object at 0x2b63408d5580>, <news_tls.data.Sentence object at 0x2b63408d5c40>, <news_tls.data.Sentence object at 0x2b63408d5eb0>, <news_tls.data.Sentence object at 0x2b63408d5f40>, <news_tls.data.Sentence object at 0x2b634011bbe0>, <news_tls.data.Sentence object at 0x2b634011bc40>, <news_tls.data.Sentence object at 0x2b634011bf40>, <news_tls.data.Sentence object at 0x2b634010b190>, <news_tls.data.Sentence object at 0x2b634010b580>, <news_tls.data.Sentence object at 0x2b632d662280>, <news_tls.data.Sentence object at 0x2b632d6622e0>, <news_tls.data.Sentence object at 0x2b632d662760>, <news_tls.data.Sentence object at 0x2b632d662a90>, <news_tls.data.Sentence object at 0x2b632d662e20>, <news_tls.data.Sentence object at 0x2b632d63b970>, <news_tls.data.Sentence object at 0x2b632d63bd30>, <news_tls.data.Sentence object at 0x2b632d65b160>, <news_tls.data.Sentence object at 0x2b632d65b8b0>, <news_tls.data.Sentence object at 0x2b632d65b940>, <news_tls.data.Sentence object at 0x2b632d299e20>, <news_tls.data.Sentence object at 0x2b632d282220>, <news_tls.data.Sentence object at 0x2b632d2822b0>, <news_tls.data.Sentence object at 0x2b632d2823d0>, <news_tls.data.Sentence object at 0x2b632d282fa0>, <news_tls.data.Sentence object at 0x2b632b41e880>, <news_tls.data.Sentence object at 0x2b632be64190>, <news_tls.data.Sentence object at 0x2b632be64940>, <news_tls.data.Sentence object at 0x2b632be441f0>, <news_tls.data.Sentence object at 0x2b632be44460>, <news_tls.data.Sentence object at 0x2b632d28a8b0>, <news_tls.data.Sentence object at 0x2b632d28aac0>, <news_tls.data.Sentence object at 0x2b632d28abe0>, <news_tls.data.Sentence object at 0x2b632b4192b0>, <news_tls.data.Sentence object at 0x2b632b4199d0>, <news_tls.data.Sentence object at 0x2b632b40a670>, <news_tls.data.Sentence object at 0x2b632b40ac10>, <news_tls.data.Sentence object at 0x2b632b404700>, <news_tls.data.Sentence object at 0x2b632b404b20>, <news_tls.data.Sentence object at 0x2b632b40c100>, <news_tls.data.Sentence object at 0x2b632b4019d0>, <news_tls.data.Sentence object at 0x2b632b401c70>, <news_tls.data.Sentence object at 0x2b632b401eb0>, <news_tls.data.Sentence object at 0x2b6340240460>, <news_tls.data.Sentence object at 0x2b63402406d0>, <news_tls.data.Sentence object at 0x2b632f0bd6d0>, <news_tls.data.Sentence object at 0x2b632f0bdf10>, <news_tls.data.Sentence object at 0x2b632b3fc460>, <news_tls.data.Sentence object at 0x2b632b3fca00>, <news_tls.data.Sentence object at 0x2b632b3fce50>, <news_tls.data.Sentence object at 0x2b634010c1f0>, <news_tls.data.Sentence object at 0x2b634010c4f0>, <news_tls.data.Sentence object at 0x2b634010c5b0>, <news_tls.data.Sentence object at 0x2b634010c910>, <news_tls.data.Sentence object at 0x2b634010cc40>, <news_tls.data.Sentence object at 0x2b632f0d0a90>, <news_tls.data.Sentence object at 0x2b632f0d0dc0>, <news_tls.data.Sentence object at 0x2b632f0c8880>, <news_tls.data.Sentence object at 0x2b632f0c8d90>, <news_tls.data.Sentence object at 0x2b632f0ed340>, <news_tls.data.Sentence object at 0x2b632f0b8760>, <news_tls.data.Sentence object at 0x2b632f0b88e0>, <news_tls.data.Sentence object at 0x2b632f0b8c70>, <news_tls.data.Sentence object at 0x2b634026d220>, <news_tls.data.Sentence object at 0x2b634026d790>, <news_tls.data.Sentence object at 0x2b632cf10e80>, <news_tls.data.Sentence object at 0x2b632aa23070>, <news_tls.data.Sentence object at 0x2b632aa23160>, <news_tls.data.Sentence object at 0x2b632aa23b20>, <news_tls.data.Sentence object at 0x2b632aa235e0>, <news_tls.data.Sentence object at 0x2b632c291910>, <news_tls.data.Sentence object at 0x2b632c291af0>, <news_tls.data.Sentence object at 0x2b632c291d90>, <news_tls.data.Sentence object at 0x2b6343559520>, <news_tls.data.Sentence object at 0x2b6343559a30>, <news_tls.data.Sentence object at 0x2b6343576f40>, <news_tls.data.Sentence object at 0x2b63481af2e0>, <news_tls.data.Sentence object at 0x2b63481af760>, <news_tls.data.Sentence object at 0x2b63481afb20>, <news_tls.data.Sentence object at 0x2b63481be310>, <news_tls.data.Sentence object at 0x2b63481be700>, <news_tls.data.Sentence object at 0x2b63481beaf0>, <news_tls.data.Sentence object at 0x2b63481bee80>, <news_tls.data.Sentence object at 0x2b632a9fd1c0>, <news_tls.data.Sentence object at 0x2b632f39fa90>, <news_tls.data.Sentence object at 0x2b632f39fac0>, <news_tls.data.Sentence object at 0x2b632f39fc70>, <news_tls.data.Sentence object at 0x2b632a9fb070>, <news_tls.data.Sentence object at 0x2b632a9fb1c0>, <news_tls.data.Sentence object at 0x2b632ff31670>, <news_tls.data.Sentence object at 0x2b632ff31df0>, <news_tls.data.Sentence object at 0x2b632ff31fd0>, <news_tls.data.Sentence object at 0x2b632a636160>, <news_tls.data.Sentence object at 0x2b632a6362e0>, <news_tls.data.Sentence object at 0x2b6340fe6e20>, <news_tls.data.Sentence object at 0x2b6340fe6fd0>, <news_tls.data.Sentence object at 0x2b632a63e3a0>, <news_tls.data.Sentence object at 0x2b632a63e850>, <news_tls.data.Sentence object at 0x2b632a63ed00>, <news_tls.data.Sentence object at 0x2b63429a2df0>, <news_tls.data.Sentence object at 0x2b63429a2fd0>, <news_tls.data.Sentence object at 0x2b632f191220>, <news_tls.data.Sentence object at 0x2b632f191400>, <news_tls.data.Sentence object at 0x2b632f191730>, <news_tls.data.Sentence object at 0x2b6340018970>, <news_tls.data.Sentence object at 0x2b6340018c40>, <news_tls.data.Sentence object at 0x2b632fa53d00>, <news_tls.data.Sentence object at 0x2b63429b1220>, <news_tls.data.Sentence object at 0x2b63429b15e0>, <news_tls.data.Sentence object at 0x2b6340730d30>, <news_tls.data.Sentence object at 0x2b6340730cd0>, <news_tls.data.Sentence object at 0x2b63400254c0>, <news_tls.data.Sentence object at 0x2b6340025730>, <news_tls.data.Sentence object at 0x2b6340025a30>, <news_tls.data.Sentence object at 0x2b632d95dd30>, <news_tls.data.Sentence object at 0x2b632d95df40>, <news_tls.data.Sentence object at 0x2b63471a1280>, <news_tls.data.Sentence object at 0x2b63471a1820>, <news_tls.data.Sentence object at 0x2b63471a1c10>, <news_tls.data.Sentence object at 0x2b632db0d4c0>, <news_tls.data.Sentence object at 0x2b632db0d5e0>, <news_tls.data.Sentence object at 0x2b632db0dca0>, <news_tls.data.Sentence object at 0x2b632d9511f0>, <news_tls.data.Sentence object at 0x2b632d951b80>, <news_tls.data.Sentence object at 0x2b63456f8760>, <news_tls.data.Sentence object at 0x2b63456f8eb0>, <news_tls.data.Sentence object at 0x2b63456f8fd0>, <news_tls.data.Sentence object at 0x2b634552a370>, <news_tls.data.Sentence object at 0x2b634552a4c0>, <news_tls.data.Sentence object at 0x2b632c430c70>, <news_tls.data.Sentence object at 0x2b632c430f10>, <news_tls.data.Sentence object at 0x2b632ac72700>, <news_tls.data.Sentence object at 0x2b632ac72af0>, <news_tls.data.Sentence object at 0x2b632ee94070>, <news_tls.data.Sentence object at 0x2b634638ab20>, <news_tls.data.Sentence object at 0x2b634638adc0>, <news_tls.data.Sentence object at 0x2b63427c94c0>, <news_tls.data.Sentence object at 0x2b63427c9a30>, <news_tls.data.Sentence object at 0x2b63427c9f40>, <news_tls.data.Sentence object at 0x2b6345569f40>, <news_tls.data.Sentence object at 0x2b6343853190>, <news_tls.data.Sentence object at 0x2b6343853580>, <news_tls.data.Sentence object at 0x2b63438539d0>, <news_tls.data.Sentence object at 0x2b6343853f70>, <news_tls.data.Sentence object at 0x2b6348172d30>, <news_tls.data.Sentence object at 0x2b6346806190>, <news_tls.data.Sentence object at 0x2b6346806880>, <news_tls.data.Sentence object at 0x2b6346806fd0>, <news_tls.data.Sentence object at 0x2b63479cf520>]
+[<news_tls.data.Sentence object at 0x2b67f76ba460>, <news_tls.data.Sentence object at 0x2b67f76babe0>, <news_tls.data.Sentence object at 0x2b67f76b4310>, <news_tls.data.Sentence object at 0x2b67f76b49a0>, <news_tls.data.Sentence object at 0x2b67f76a8100>, <news_tls.data.Sentence object at 0x2b67f76bcd30>, <news_tls.data.Sentence object at 0x2b67f76b1130>, <news_tls.data.Sentence object at 0x2b67f76b13a0>, <news_tls.data.Sentence object at 0x2b67f76b1910>, <news_tls.data.Sentence object at 0x2b67f76b1940>, <news_tls.data.Sentence object at 0x2b67fd5685e0>, <news_tls.data.Sentence object at 0x2b67fd568580>, <news_tls.data.Sentence object at 0x2b67fd568820>, <news_tls.data.Sentence object at 0x2b67fd568ac0>, <news_tls.data.Sentence object at 0x2b68102e91c0>, <news_tls.data.Sentence object at 0x2b67fd044c70>, <news_tls.data.Sentence object at 0x2b67fd033280>, <news_tls.data.Sentence object at 0x2b67fd033940>, <news_tls.data.Sentence object at 0x2b67fd033bb0>, <news_tls.data.Sentence object at 0x2b67fd033c70>, <news_tls.data.Sentence object at 0x2b67f7af88e0>, <news_tls.data.Sentence object at 0x2b67f7af8940>, <news_tls.data.Sentence object at 0x2b67f7af8c40>, <news_tls.data.Sentence object at 0x2b67f7af8e50>, <news_tls.data.Sentence object at 0x2b67f7b06280>, <news_tls.data.Sentence object at 0x2b67fc717f40>, <news_tls.data.Sentence object at 0x2b67fc717fd0>, <news_tls.data.Sentence object at 0x2b67f7aee460>, <news_tls.data.Sentence object at 0x2b67f7aee790>, <news_tls.data.Sentence object at 0x2b67f7aeeb20>, <news_tls.data.Sentence object at 0x2b67f8b22670>, <news_tls.data.Sentence object at 0x2b67f8b22a30>, <news_tls.data.Sentence object at 0x2b67f8b22e20>, <news_tls.data.Sentence object at 0x2b67fc70a5b0>, <news_tls.data.Sentence object at 0x2b67fc70a640>, <news_tls.data.Sentence object at 0x2b67f8b1db20>, <news_tls.data.Sentence object at 0x2b67f8b1dee0>, <news_tls.data.Sentence object at 0x2b67f8b1dfd0>, <news_tls.data.Sentence object at 0x2b67f8b110d0>, <news_tls.data.Sentence object at 0x2b67f8b11ca0>, <news_tls.data.Sentence object at 0x2b67fceb9580>, <news_tls.data.Sentence object at 0x2b67fceb9e50>, <news_tls.data.Sentence object at 0x2b6814e28640>, <news_tls.data.Sentence object at 0x2b6814e28eb0>, <news_tls.data.Sentence object at 0x2b67f8b15160>, <news_tls.data.Sentence object at 0x2b67fcedb5b0>, <news_tls.data.Sentence object at 0x2b67fcedb7c0>, <news_tls.data.Sentence object at 0x2b67fcedb8e0>, <news_tls.data.Sentence object at 0x2b67fcedbf70>, <news_tls.data.Sentence object at 0x2b67fceaf6d0>, <news_tls.data.Sentence object at 0x2b67fceca370>, <news_tls.data.Sentence object at 0x2b67fceca910>, <news_tls.data.Sentence object at 0x2b67fcec5400>, <news_tls.data.Sentence object at 0x2b67fcec5820>, <news_tls.data.Sentence object at 0x2b67fcec5dc0>, <news_tls.data.Sentence object at 0x2b67fceab6d0>, <news_tls.data.Sentence object at 0x2b67fceab970>, <news_tls.data.Sentence object at 0x2b67fceabbb0>, <news_tls.data.Sentence object at 0x2b67f9d31160>, <news_tls.data.Sentence object at 0x2b67f9d313d0>, <news_tls.data.Sentence object at 0x2b67f96ff3d0>, <news_tls.data.Sentence object at 0x2b67f96ffc10>, <news_tls.data.Sentence object at 0x2b67f9d67160>, <news_tls.data.Sentence object at 0x2b67f9d67700>, <news_tls.data.Sentence object at 0x2b67f9d67b50>, <news_tls.data.Sentence object at 0x2b67f9d50eb0>, <news_tls.data.Sentence object at 0x2b67f97251f0>, <news_tls.data.Sentence object at 0x2b67f97252b0>, <news_tls.data.Sentence object at 0x2b67f9725610>, <news_tls.data.Sentence object at 0x2b67f9725940>, <news_tls.data.Sentence object at 0x2b67f96f6790>, <news_tls.data.Sentence object at 0x2b67f96f6ac0>, <news_tls.data.Sentence object at 0x2b67f96ed580>, <news_tls.data.Sentence object at 0x2b67f96eda90>, <news_tls.data.Sentence object at 0x2b67f9d42040>, <news_tls.data.Sentence object at 0x2b67f975e460>, <news_tls.data.Sentence object at 0x2b67f975e5e0>, <news_tls.data.Sentence object at 0x2b67f975e970>, <news_tls.data.Sentence object at 0x2b67f975eee0>, <news_tls.data.Sentence object at 0x2b67f9732490>, <news_tls.data.Sentence object at 0x2b67f9736d30>, <news_tls.data.Sentence object at 0x2b67f9736d60>, <news_tls.data.Sentence object at 0x2b67f9736e50>, <news_tls.data.Sentence object at 0x2b67f7683130>, <news_tls.data.Sentence object at 0x2b67f7683310>, <news_tls.data.Sentence object at 0x2b67f9125610>, <news_tls.data.Sentence object at 0x2b67f91257f0>, <news_tls.data.Sentence object at 0x2b67f9125a90>, <news_tls.data.Sentence object at 0x2b68109f8220>, <news_tls.data.Sentence object at 0x2b68109f8730>, <news_tls.data.Sentence object at 0x2b67f7d7bc40>, <news_tls.data.Sentence object at 0x2b67f7d7bfd0>, <news_tls.data.Sentence object at 0x2b67f96eb460>, <news_tls.data.Sentence object at 0x2b67f96eb820>, <news_tls.data.Sentence object at 0x2b67f96ebfd0>, <news_tls.data.Sentence object at 0x2b67f768a400>, <news_tls.data.Sentence object at 0x2b67f768a7f0>, <news_tls.data.Sentence object at 0x2b67f768ab80>, <news_tls.data.Sentence object at 0x2b67f768ae80>, <news_tls.data.Sentence object at 0x2b67fc022790>, <news_tls.data.Sentence object at 0x2b67fc0227c0>, <news_tls.data.Sentence object at 0x2b67fc022970>, <news_tls.data.Sentence object at 0x2b67fc022d30>, <news_tls.data.Sentence object at 0x2b67fc022e80>, <news_tls.data.Sentence object at 0x2b681302f370>, <news_tls.data.Sentence object at 0x2b681302faf0>, <news_tls.data.Sentence object at 0x2b681302fcd0>, <news_tls.data.Sentence object at 0x2b681302fe20>, <news_tls.data.Sentence object at 0x2b67f73c8040>, <news_tls.data.Sentence object at 0x2b67ff4a1b20>, <news_tls.data.Sentence object at 0x2b67ff4a1cd0>, <news_tls.data.Sentence object at 0x2b6813e020a0>, <news_tls.data.Sentence object at 0x2b6813e02550>, <news_tls.data.Sentence object at 0x2b6813e02a00>, <news_tls.data.Sentence object at 0x2b67ff492af0>, <news_tls.data.Sentence object at 0x2b67ff492ca0>, <news_tls.data.Sentence object at 0x2b67ff492ee0>, <news_tls.data.Sentence object at 0x2b67fcb5f100>, <news_tls.data.Sentence object at 0x2b67fcb5f430>, <news_tls.data.Sentence object at 0x2b67fd3c3670>, <news_tls.data.Sentence object at 0x2b67fd3c3940>, <news_tls.data.Sentence object at 0x2b67ff6fca00>, <news_tls.data.Sentence object at 0x2b67ff6fcee0>, <news_tls.data.Sentence object at 0x2b67f7bdb2e0>, <news_tls.data.Sentence object at 0x2b67fc691a30>, <news_tls.data.Sentence object at 0x2b67fc6919d0>, <news_tls.data.Sentence object at 0x2b67f80e41c0>, <news_tls.data.Sentence object at 0x2b67f80e4430>, <news_tls.data.Sentence object at 0x2b67f80e4730>, <news_tls.data.Sentence object at 0x2b67fa861a30>, <news_tls.data.Sentence object at 0x2b67fa861c40>, <news_tls.data.Sentence object at 0x2b67fa861f40>, <news_tls.data.Sentence object at 0x2b67fd768520>, <news_tls.data.Sentence object at 0x2b67fd768910>, <news_tls.data.Sentence object at 0x2b67f9f651c0>, <news_tls.data.Sentence object at 0x2b67f9f652e0>, <news_tls.data.Sentence object at 0x2b67f9f659a0>, <news_tls.data.Sentence object at 0x2b67f9f65eb0>, <news_tls.data.Sentence object at 0x2b67fdaeb880>, <news_tls.data.Sentence object at 0x2b67fabfe460>, <news_tls.data.Sentence object at 0x2b67fabfebb0>, <news_tls.data.Sentence object at 0x2b67fabfeca0>, <news_tls.data.Sentence object at 0x2b6813360070>, <news_tls.data.Sentence object at 0x2b68133601c0>, <news_tls.data.Sentence object at 0x2b67f7130940>, <news_tls.data.Sentence object at 0x2b67f7130be0>, <news_tls.data.Sentence object at 0x2b6810294400>, <news_tls.data.Sentence object at 0x2b68102947f0>, <news_tls.data.Sentence object at 0x2b6810294d30>, <news_tls.data.Sentence object at 0x2b67fa30b820>, <news_tls.data.Sentence object at 0x2b67fa30bac0>, <news_tls.data.Sentence object at 0x2b6811f471c0>, <news_tls.data.Sentence object at 0x2b6811f47730>, <news_tls.data.Sentence object at 0x2b6811f47c40>, <news_tls.data.Sentence object at 0x2b68143bad60>, <news_tls.data.Sentence object at 0x2b68143bae50>, <news_tls.data.Sentence object at 0x2b6812deb280>, <news_tls.data.Sentence object at 0x2b6812deb6d0>, <news_tls.data.Sentence object at 0x2b6812debc70>, <news_tls.data.Sentence object at 0x2b6814df9a30>, <news_tls.data.Sentence object at 0x2b6814df9e50>, <news_tls.data.Sentence object at 0x2b6814de0580>, <news_tls.data.Sentence object at 0x2b6814de0ca0>, <news_tls.data.Sentence object at 0x2b67fbd95220>]

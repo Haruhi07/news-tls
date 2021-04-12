@@ -4,6 +4,8 @@ from scipy import sparse
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import normalize
 from sklearn.cluster import MiniBatchKMeans
+from transformers import PegasusForConditionalGeneration, PegasusTokenizer
+import torch
 
 
 class Summarizer:
@@ -11,6 +13,19 @@ class Summarizer:
     def summarize(self, sents, k, vectorizer, embedder, filters=None):
         raise NotImplementedError
 
+class Pegasus(Summarizer):
+    def __init__(self):
+        self.model_name = 'google/pegasus-xsum'
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+    def summarize(self, sents, k, vectorizer, embedder, filters=None):
+        src_text = sents
+        tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
+        model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
+        batch = tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
+        translated = model.generate(**batch)
+        tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
+        print(tgt_text)
 
 class TextRank(Summarizer):
 

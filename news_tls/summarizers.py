@@ -10,7 +10,7 @@ import torch
 
 class Summarizer:
 
-    def summarize(self, sents, k, vectorizer, embedder, filters=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raise NotImplementedError
 
 class Pegasus(Summarizer):
@@ -18,7 +18,7 @@ class Pegasus(Summarizer):
         self.model_name = 'google/pegasus-xsum'
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    def summarize(self, sents, k, vectorizer, embedder, filters=None):
+    def summarize(self, sents, k, vectorizer, embedder, filter=None):
         src_text = [s.raw for s in sents]
         tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
         model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)

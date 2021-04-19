@@ -10,7 +10,7 @@ Traceback (most recent call last):
   File "/home/hs20307/news-tls/news_tls/clust.py", line 248, in predict
     summary = self.summarizer.summarize(
   File "/home/hs20307/news-tls/news_tls/summarizers.py", line 26, in summarize
-    translated = model.generate(**batch)
+    translated = self.model.generate(**batch)
   File "/home/hs20307/.local/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 26, in decorate_context
     return func(*args, **kwargs)
   File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/generation_utils.py", line 1044, in generate
@@ -35,8 +35,8 @@ Traceback (most recent call last):
     hidden_states, cross_attn_weights, cross_attn_present_key_value = self.encoder_attn(
   File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
     result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 198, in forward
-    key_states = self._shape(self.k_proj(key_value_states), -1, bsz)
+  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 199, in forward
+    value_states = self._shape(self.v_proj(key_value_states), -1, bsz)
   File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 171, in _shape
     return tensor.view(bsz, seq_len, self.num_heads, self.head_dim).transpose(1, 2).contiguous()
-RuntimeError: CUDA out of memory. Tried to allocate 498.00 MiB (GPU 0; 10.76 GiB total capacity; 9.34 GiB already allocated; 341.12 MiB free; 9.42 GiB reserved in total by PyTorch)
+RuntimeError: CUDA out of memory. Tried to allocate 498.00 MiB (GPU 0; 10.76 GiB total capacity; 8.84 GiB already allocated; 399.12 MiB free; 9.37 GiB reserved in total by PyTorch)

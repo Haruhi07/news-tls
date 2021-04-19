@@ -83,16 +83,16 @@ class ClusteringTimelineGenerator():
                 output_titles=False,
                 output_body_sents=True):
         #Topic Model here
-        print('lda topics...')
+        #print('lda topics...')
         lda_model = TopicModeller().LDA(collection)
         lda_topics = lda_model.print_topics()
-        for it in lda_topics:
-            print(it)
+        #for it in lda_topics:
+        #    print(it)
         print('hdp topics...')
         hdp_model = TopicModeller().HDP(collection)
         hdp_topics = hdp_model.print_topics()
-        for it in hdp_topics:
-            print(it)
+        #for it in hdp_topics:
+        #    print(it)
         print('clustering articles...')
 
         # word embedding & cluster
@@ -202,8 +202,8 @@ class ClusteringTimelineGenerator():
             weighted_sim[j] = np.matmul(unweighted_centroid_word_sim, v_list)
 
         weighted_sim = weighted_sim.transpose()
-        print('weighted similarity between topics and clusters...')
-        print(weighted_sim)
+        #print('weighted similarity between topics and clusters...')
+        #print(weighted_sim)
 
         # assign dates
         print('assigning cluster times...')
@@ -218,22 +218,10 @@ class ClusteringTimelineGenerator():
         print('vectorizing sentences...')
 
         def sent_filter(sent):
-            """
-            Returns True if sentence is allowed to be in a summary.
-            """
             return True
-            #for generating eval
-            lower = sent.raw.lower()
-            if not any([kw in lower for kw in collection.keywords]):
-                return False
-            elif not output_titles and sent.is_title:
-                return False
-            elif not output_body_sents and not sent.is_sent:
-                return False
-            else:
-                return True
 
         print('summarization...')
+        del lda_model, hdp_model, embedder
         sys_l = 0
         sys_m = 0
         ref_m = max_dates * max_summary_sents

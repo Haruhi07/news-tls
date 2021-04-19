@@ -13,14 +13,14 @@ class Summarizer:
     def summarize(self, sents, k, vectorizer, embedder, filter=None):
         raise NotImplementedError
 
-class Pegasus(Summarizer):
+class Pegasus():
     def __init__(self):
         self.model_name = 'google/pegasus-xsum'
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
         self.model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
 
-    def summarize(self, sents, k, vectorizer, embedder, filter=None):
+    def summarize(self, sents):
         src_text = [s.raw for s in sents]
         print(src_text)
         batch = self.tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)

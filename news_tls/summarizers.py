@@ -17,14 +17,14 @@ class Pegasus(Summarizer):
     def __init__(self):
         self.model_name = 'google/pegasus-xsum'
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
+        self.model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
 
     def summarize(self, sents, k, vectorizer, embedder, filter=None):
         src_text = [s.raw for s in sents]
-        tokenizer = PegasusTokenizer.from_pretrained(self.model_name)
-        model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
-        batch = tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
-        translated = model.generate(**batch)
-        tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
+        batch = self.tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
+        translated = self.model.generate(**batch)
+        tgt_text = self.tokenizer.batch_decode(translated, skip_special_tokens=True)
         print(tgt_text)
         return tgt_text
 

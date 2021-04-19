@@ -26,7 +26,7 @@ export PYTHONPATH=$PYTHONPATH:"/home/hs20307/news-tls/"
 DATASET=/work/hs20307/Dataset
 RESULT=./result
 
-python -u ./experiments/test_ST.py
+python -u ./demo.py
 
 # To submit: qsub run_NER_EMNLP19.sh
 # To display the queue: qstat -Q gpu (this is usually where the GPU job ends up)

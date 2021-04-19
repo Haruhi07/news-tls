@@ -1,11 +1,6 @@
  
  University of Bristol ACRC HPC Bluepebble Service
  -------------------------------------------------
- Job test_ST, jobid 1209143.bp1, username hs20307 - started execution at 16:21:26 Tue 30/03/21 on node bp1-gpu00017.data.bp.acrc.priv
+ Job test_ST, jobid 1471817.bp1, username hs20307 - started execution at 23:46:26 Mon 19/04/21 on node bp1-gpu00019.data.bp.acrc.priv
  
-[[ 0.06400716  0.13987008  0.23072596 ...  0.0875865  -0.21781883
-  -0.33164558]
- [-0.4974283   0.5288946   0.03039914 ...  0.18309169 -0.13545366
-  -0.13370837]
- [-0.09224461  0.21302506  0.14124058 ...  0.21329872 -0.1470349
-   0.01362918]]
+['Four Royal Navy frigates set to be sold as scrap have received no bids, the BBC understands.']

@@ -1,7 +1,7 @@
  
  University of Bristol ACRC HPC Bluepebble Service
  -------------------------------------------------
- Job news_tls, jobid 1471820.bp1, username hs20307 - started execution at 00:08:56 Tue 20/04/21 on node bp1-gpu00019.data.bp.acrc.priv
+ Job news_tls, jobid 1475821.bp1, username hs20307 - started execution at 00:15:41 Tue 20/04/21 on node bp1-gpu00019.data.bp.acrc.priv
  
 topic 1/17: EgyptianProtest_cnn, ref timeline 1/1
 name = EgyptianProtest_cnn start = 2011-01-25 00:00:00 end = 2011-02-13 00:00:00
@@ -30,7 +30,7 @@ times: 20 articles: 218 clusters: 11
 154 [142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162]
 177 [163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 186, 188, 193, 194, 195, 196, 197, 198, 199, 200]
 205 [185, 187, 189, 190, 191, 192, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217]
-[['spitzer', 'boehner', 'think'], ['report', 'frederik', 'pleitgen'], ['reddit', 'post', 'tell'], ['update', 'cairo', 'say'], ['internet', 'twitter', 'protest'], ['blitzer', 'shoukry', 'president'], ['know', 'want', 'go'], ['mubarak', 'egypt', 'say'], ['abhisit', 'streets', 'people'], ['corruption', 'ghonim', 'protest'], ['ghonim', 'tantawi', 'egypt'], ['brotherhood', 'muslim', 'group'], ['country', 'protesters', 'like'], ['think', 'time', 'know'], ['weather', 'world', 'flood'], ['right', 'democracy', 'mubarak'], ['service', 'term', 'january'], ['kurtz', 'think', 'like'], ['military', 'february', 'state'], ['think', 'zakaria', 'crowley']]
+[['think', 'want', 'come'], ['zakaria', 'need', 'think'], ['cairo', 'say', 'protest'], ['police', 'protest', 'say'], ['brotherhood', 'muslim', 'political'], ['egypt', 'government', 'egyptian'], ['snow', 'update', 'wednesday'], ['thursday', 'report', 'say'], ['lemon', 'february', 'support'], ['mubarak', 'say', 'protesters'], ['khalil', 'february', 'egypt'], ['think', 'look', 'know'], ['crowley', 'right', 'think'], ['allah', 'pleitgen', 'frederik'], ['january', 'country', 'mubarak'], ['know', 'right', 'go'], ['cairo', 'government', 'egypt'], ['egypt', 'know', 'go'], ['wednesday', 'levy', 'years'], ['military', 'egypt', 'blitzer']]
 assigning cluster times...
 ranking clusters...
 vectorizing sentences...

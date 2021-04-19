@@ -243,7 +243,6 @@ class ClusteringTimelineGenerator():
 
             date = c.time.date()
             c_sents = self._select_sents_from_cluster(c)
-            print(c_sents)
             #print("C", date, len(c_sents), "M", sys_m, "L", sys_l)
             summary = self.summarizer.summarize(
                 c_sents,

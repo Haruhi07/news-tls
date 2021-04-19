@@ -22,6 +22,7 @@ class Pegasus(Summarizer):
 
     def summarize(self, sents, k, vectorizer, embedder, filter=None):
         src_text = [s.raw for s in sents]
+        print(src_text)
         batch = self.tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
         translated = self.model.generate(**batch)
         tgt_text = self.tokenizer.batch_decode(translated, skip_special_tokens=True)

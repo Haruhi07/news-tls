@@ -21,7 +21,8 @@ class Pegasus():
         self.model = PegasusForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
 
     def summarize(self, sents):
-        src_text = [s.raw for s in sents]
+        sents = [s.raw for s in sents]
+        src_text = ' '.join(sents)
         print(src_text)
         batch = self.tokenizer(src_text, truncation=True, padding='longest', return_tensors="pt").to(self.device)
         translated = self.model.generate(**batch)

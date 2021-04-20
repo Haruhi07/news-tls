@@ -29,7 +29,7 @@ export RESULT=./result
 export TOKENIZERS_PARALLELISM=false
 export PERL5LIB="/home/hs20307/perl5/lib/perl5"
 
-python -u ./experiments/evaluate.py --dataset $DATASET/t1 --method clust --output $RESULT/t17.clust.json
+python -u ./experiments/evaluate.py --dataset $DATASET/t17 --method clust --output $RESULT/t17.clust.json
 
 # To submit: qsub run_NER_EMNLP19.sh
 # To display the queue: qstat -Q gpu (this is usually where the GPU job ends up)

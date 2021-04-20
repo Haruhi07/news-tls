@@ -1,42 +1,22 @@
 [nltk_data] Downloading package wordnet to /home/hs20307/nltk_data...
 [nltk_data]   Package wordnet is already up-to-date!
-Traceback (most recent call last):
-  File "./experiments/evaluate.py", line 207, in <module>
-    main(parser.parse_args())
-  File "./experiments/evaluate.py", line 197, in main
-    evaluate(system, dataset, args.output, trunc_timelines=False, time_span_extension=0)
-  File "./experiments/evaluate.py", line 113, in evaluate
-    pred_timeline_, n_clusters = tls_model.predict(
-  File "/home/hs20307/news-tls/news_tls/clust.py", line 235, in predict
-    summary = self.summarizer.summarize(c_sents)
-  File "/home/hs20307/news-tls/news_tls/summarizers.py", line 27, in summarize
-    translated = self.model.generate(**batch)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 26, in decorate_context
-    return func(*args, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/generation_utils.py", line 1044, in generate
-    return self.beam_search(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/generation_utils.py", line 1719, in beam_search
-    outputs = self(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 1266, in forward
-    outputs = self.model(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 1151, in forward
-    decoder_outputs = self.decoder(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 1015, in forward
-    layer_outputs = decoder_layer(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 437, in forward
-    hidden_states, cross_attn_weights, cross_attn_present_key_value = self.encoder_attn(
-  File "/home/hs20307/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 198, in forward
-    key_states = self._shape(self.k_proj(key_value_states), -1, bsz)
-  File "/home/hs20307/.local/lib/python3.8/site-packages/transformers/models/pegasus/modeling_pegasus.py", line 171, in _shape
-    return tensor.view(bsz, seq_len, self.num_heads, self.head_dim).transpose(1, 2).contiguous()
-RuntimeError: CUDA out of memory. Tried to allocate 498.00 MiB (GPU 0; 10.76 GiB total capacity; 9.03 GiB already allocated; 229.12 MiB free; 9.53 GiB reserved in total by PyTorch)
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+/home/hs20307/.conda/envs/news_tls/lib/python3.8/site-packages/sklearn/cluster/_affinity_propagation.py:246: ConvergenceWarning: Affinity propagation did not converge, this model will not have any cluster centers.
+  warnings.warn("Affinity propagation did not converge, this model "
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy
+WARNING:gensim.models.ldamodel:too few updates, training might not converge; consider increasing the number of passes or iterations to improve accuracy

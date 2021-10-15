@@ -533,14 +533,14 @@ class AffinityPropagationClusterer(Clusterer):
             return S
 
         S = calculate_similarity('euclid')
-        af = AffinityPropagation(preference=-50, affinity='precomputed', random_state=None).fit(S)
+        af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
         cluster_centers = af.cluster_centers_indices_
         labels = af.labels_
 
         if labels[0] == -1:
             print('cosine')
             S = calculate_similarity('cosine')
-            af = AffinityPropagation(preference=-50, affinity='precomputed', random_state=None).fit(S)
+            af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
             cluster_centers = af.cluster_centers_indices_
             labels = af.labels_
 

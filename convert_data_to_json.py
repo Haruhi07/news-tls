@@ -1,11 +1,12 @@
 import os
 import json
 import shutil
+import pathlib
 
-data_dir = os.path.join("backup_dataset", "crisis")
-timeline_out_dir = os.path.join("backup_dataset", "crisis")
-#timeline_out_dir = os.path.join("dataset/crisis")
-out_dir = data_dir
+data_dir = pathlib.Path("./dataset/t17/Data")
+#timeline_out_dir = os.path.join("backup_dataset", "crisis")
+timeline_out_dir = pathlib.Path("dataset/t17")
+out_dir = pathlib.Path("./dataset/t17")
 #shutil.rmtree(out_dir)
 #os.mkdir(out_dir)
 topics = os.listdir(data_dir)
@@ -15,9 +16,9 @@ for topic in topics:
     if topic == ".DS_Store":
         continue
     print("topic = {}".format(topic))
-    #os.mkdir(os.path.join(out_dir, topic))
-    article_json = open(os.path.join(out_dir, topic, "articles.jsonl"), "w")
-    dates_dir = os.path.join(data_dir, topic, "public", "content")
+    article_json_path = data_dir/topic/"articles.jsonl"
+    article_json = open(article_json_path, "w")
+    dates_dir = data_dir/topic/"InputDocs"
     dates = os.listdir(dates_dir)
     for date in dates:
         if date == ".DS_Store":
@@ -34,8 +35,9 @@ for topic in topics:
             article_json.write(json_data + "\n")
     article_json.close()
 
-    timeline_json = open(os.path.join(timeline_out_dir, topic, "timelines.jsonl"), "w")
-    raw_timeline_dir = os.path.join(data_dir, topic, "public", "timelines")
+    timeline_json_path = data_dir/topic/"timelines.jsonl"
+    timeline_json = open(timeline_json_path, "w")
+    raw_timeline_dir = data_dir/topic/"timelines"
     timelines = os.listdir(raw_timeline_dir)
     timeline_list = []
     for timeline in timelines:
@@ -67,11 +69,5 @@ for topic in topics:
         timeline_json.write(tmp_json + "\n")
         timeline_file.close()
     timeline_json.close()
-
-    keywords_json = open(os.path.join(out_dir, topic, "keywords.json"), "w")
-    keywords = [topic.split('_')[0]]
-    json_data = json.dumps(keywords)
-    keywords_json.write(json_data + "\n")
-    keywords_json.close()
 
 f_tmp.close()

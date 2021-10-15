@@ -37,7 +37,7 @@ def tokenize_dataset(root, spacy_model):
         utils.write_jsonl(out_batch, jsonl_out_path, override=False)
 
         gz_out_path = root / topic / 'articles.tokenized.jsonl.gz'
-        utils.gzip_file(jsonl_out_path, gz_out_path, delete_old=True)
+        utils.gzip_file(jsonl_out_path, gz_out_path, delete_old=False)
 
 
 

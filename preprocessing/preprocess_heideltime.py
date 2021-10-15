@@ -44,6 +44,8 @@ def heideltime_preprocess(dataset_dir, heideltime_path):
 
     for topic in os.listdir(dataset_dir):
         print('TOPIC:', topic)
+        if topic == '.DS_Store':
+            continue
 
         articles = utils.read_jsonl_gz(dataset_dir / topic / 'articles.tokenized.jsonl.gz')
 

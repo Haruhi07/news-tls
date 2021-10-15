@@ -115,6 +115,7 @@ def preprocess_article(old_article, timeml_raw, nlp):
         return None
 
     doc = spacy.tokens.Doc(nlp.vocab, words=tokens)
+    print(f'nlp={nlp}')
     nlp.tagger(doc)
     nlp.entity(doc)
     nlp.parser(doc)
@@ -167,6 +168,8 @@ def preprocess_article(old_article, timeml_raw, nlp):
 def preprocess_dataset(root, nlp):
     for topic in sorted(os.listdir(root)):
         print('TOPIC:', topic)
+        if topic == '.DS_Store':
+            continue
 
         article_path = root / topic / 'articles.tokenized.jsonl.gz'
         articles = utils.read_jsonl_gz(article_path)
@@ -195,13 +198,14 @@ def preprocess_dataset(root, nlp):
 
         utils.write_jsonl(out_batch, out_path, override=False)
         gz_path = str(out_path) + '.gz'
-        utils.gzip_file(inpath=out_path, outpath=gz_path, delete_old=True)
+        utils.gzip_file(inpath=out_path, outpath=gz_path, delete_old=False)
 
 
 def main(args):
     dataset_dir = pathlib.Path(args.dataset)
     if not dataset_dir.exists():
         raise FileNotFoundError('dataset not found')
+    print(f'model={args.spacy_model}')
     nlp = spacy.load(args.spacy_model)
     preprocess_dataset(dataset_dir, nlp)
 

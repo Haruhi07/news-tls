@@ -17,44 +17,6 @@ from gensim.parsing.preprocessing import STOPWORDS
 import nltk
 nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer, SnowballStemmer # to perform lemmatization or stemming in our pre-processing
-from nltk.stem.porter import *
-
-
-class TopicModeller():
-    def __init__(self):
-        self.lemmatizer = WordNetLemmatizer()
-
-    def preprocess(self, collection):
-        articles = list(collection.articles())
-        texts = ['{} {}'.format(a.title, a.text) for a in articles]
-        result = []
-        for text in texts:
-            tmp = []
-            for token in gensim.utils.simple_preprocess(text):
-                if token not in gensim.parsing.preprocessing.STOPWORDS and len(token) > 3:
-                    tmp.append(self.lemmatizer.lemmatize(token, 'v'))
-            result.append(tmp)
-        return result
-
-    def LDA(self, collection):
-        texts = self.preprocess(collection)
-        dictionary = gensim.corpora.Dictionary(texts)
-        bow_corpus = [dictionary.doc2bow(text) for text in texts]
-        lda_model = LdaModel(bow_corpus,
-                             num_topics=20,
-                             id2word=dictionary,
-                             passes=4,
-        )
-        return lda_model
-
-    def HDP(self, collection):
-        texts = self.preprocess(collection)
-        dictionary = gensim.corpora.Dictionary(texts)
-        bow_corpus = [dictionary.doc2bow(text) for text in texts]
-        hdp_model = HdpModel(bow_corpus,
-                             id2word=dictionary
-                    )
-        return hdp_model
 
 ################################# Timeline Generator ###################################
 
@@ -143,8 +105,8 @@ class ClusteringTimelineGenerator():
     def _select_sents_from_cluster(self, cluster):
         sents = []
         for a in cluster.articles:
-            for s in a.sentences[:self.clip_sents]:
-            #for s in a.sentences:
+            #for s in a.sentences[:self.clip_sents]:
+            for s in a.sentences:
                 sents.append(s)
         return sents
 

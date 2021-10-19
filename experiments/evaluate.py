@@ -173,12 +173,13 @@ def main(args):
             date_ranker=date_ranker,
             summarizer=summarizer,
             sent_collector=sent_collector,
-            key_to_model = key_to_model
+            key_to_model=key_to_model
         )
 
     elif args.method == 'clust':
         cluster_ranker = clust.ClusterDateMentionCountRanker()
-        clusterer = clust.AffinityPropagationClusterer()
+        #clusterer = clust.AffinityPropagationClusterer()
+        clusterer = clust.TemporalMarkovClusterer()
         summarizer = summarizers.Pegasus()
         system = clust.ClusteringTimelineGenerator(
             cluster_ranker=cluster_ranker,

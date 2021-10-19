@@ -1,7 +1,7 @@
 import numpy as np
 import datetime
 import collections
-#import markov_clustering as mc
+import markov_clustering as mc
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import AffinityPropagation, AgglomerativeClustering

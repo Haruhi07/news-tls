@@ -258,6 +258,8 @@ class Dataset:
     def _load_collections(self):
         collections = []
         for topic in self.topics:
+            if topic == '.DS_Store':
+                continue
             topic_path = self.path / topic
             c = ArticleCollection(topic_path)
             collections.append(c)

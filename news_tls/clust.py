@@ -365,7 +365,7 @@ class AffinityPropagationClusterer(Clusterer):
 
         times = [a.time for a in articles]
 
-        def calculate_similarity(method = 'euclid'):
+        def calculate_similarity(method='euclid'):
             if method == 'euclid':
                 S = np.zeros((len(X), len(X)))
                 for i in range(len(X)):
@@ -382,14 +382,14 @@ class AffinityPropagationClusterer(Clusterer):
                         S[i][j] = -100
             return S
 
-        S = calculate_similarity('euclid')
+        S = calculate_similarity('cosine')
         af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
         cluster_centers = af.cluster_centers_indices_
         labels = af.labels_
 
         if labels[0] == -1:
-            print('cosine')
-            S = calculate_similarity('cosine')
+            print('euclid')
+            S = calculate_similarity('euclid')
             af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
             cluster_centers = af.cluster_centers_indices_
             labels = af.labels_

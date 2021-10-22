@@ -378,7 +378,7 @@ class AffinityPropagationClusterer(Clusterer):
             for i, time_i in enumerate(times):
                 for j, time_j in enumerate(times):
                     time_gap = max(time_i, time_j) - min(time_i, time_j)
-                    if time_gap > datetime.timedelta(days=3):
+                    if time_gap > datetime.timedelta(days=1):
                         S[i][j] = -100
             return S
 

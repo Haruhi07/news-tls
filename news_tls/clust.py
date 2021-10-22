@@ -355,7 +355,7 @@ class AffinityPropagationClusterer(Clusterer):
                 if a.title:
                     tmp_text.append(a.title)
                 sents = a.text.split('\n')
-                for sent in sents[:5]:
+                for sent in sents:
                     if sent != b'':
                         tmp_text.append(sent)
                 sent_embed = embedder.encode(tmp_text)

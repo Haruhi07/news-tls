@@ -47,8 +47,8 @@ class ClusteringTimelineGenerator():
 
         # word embedding & cluster
         vectorizer = None
-        #embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
-        embedder = SentenceTransformer('paraphrase-distilroberta-base-v2')
+        embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
+        #embedder = SentenceTransformer('paraphrase-distilroberta-base-v2')
         clusters = self.clusterer.cluster(collection, None, embedder)
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
@@ -361,7 +361,7 @@ class AffinityPropagationClusterer(Clusterer):
                 #sent_embed = embedder.encode(tmp_text)
                 #texts.append(np.mean(sent_embed, axis=0))  # use average sentence embeddings as document embedding
                 sent_embed = embedder.encode(a.text)
-                texts.append(sent_embed) # encode all the doc
+                texts.append(sent_embed)  # encode all the doc
 
             X = np.vstack(texts)
 

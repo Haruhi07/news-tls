@@ -53,7 +53,7 @@ class ClusteringTimelineGenerator():
         #embedder = SentenceTransformer('paraphrase-distilroberta-base-v2')
         clusters = self.clusterer.cluster(collection, None, embedder)
         with open(cluster_dir/f'{collection.name}.pkl', 'wb') as f:
-            pickle.dump(clusters, f)
+            pickle.dump(clusters, file=f)
 
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)

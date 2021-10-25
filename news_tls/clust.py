@@ -1,6 +1,7 @@
 import numpy as np
 import datetime
 import collections
+import pickle
 import markov_clustering as mc
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -37,6 +38,7 @@ class ClusteringTimelineGenerator():
         self.clip_sents = clip_sents
 
     def predict(self,
+                cluster_dir,
                 collection,
                 max_dates=10,
                 max_summary_sents=1,
@@ -50,6 +52,9 @@ class ClusteringTimelineGenerator():
         embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
         #embedder = SentenceTransformer('paraphrase-distilroberta-base-v2')
         clusters = self.clusterer.cluster(collection, None, embedder)
+        with open(cluster_dir, 'rb') as f:
+            pickle.dump(clusters)
+
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
         clusters_num = len(clusters)

@@ -27,10 +27,11 @@ def first_n_sents(text, n=5):
     sentences = text.split('.')
     tmp = []
     for s in sentences:
-        if (s != '') and (s != '\n'):
-            tmp.append(s)
-            if len(tmp) == n:
-                break
+        if s == '' or s == '\n':
+            continue
+        tmp.append(s)
+        if len(tmp) == n:
+            break
     ret = '.'.join(tmp)
     return ret
 

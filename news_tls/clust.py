@@ -58,6 +58,8 @@ class ClusteringTimelineGenerator():
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
         clusters_num = len(clusters)
 
+        print(f'ref_tl={ref_tl}')
+
         centroid_list = [c.centroid for c in clusters]
 
         # assign dates

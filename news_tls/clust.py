@@ -53,8 +53,6 @@ class ClusteringTimelineGenerator():
         embedder = SentenceTransformer('paraphrase-distilroberta-base-v1')
         #embedder = SentenceTransformer('paraphrase-distilroberta-base-v2')
         clusters = self.clusterer.cluster(collection, None, embedder)
-        with open(cluster_dir/f'{collection.name}_{j}.pkl', 'wb') as f:
-            pickle.dump(clusters, file=f)
 
         #doc_vectorizer = TfidfVectorizer(lowercase=True, stop_words='english')
         #clusters = self.clusterer.cluster(collection, doc_vectorizer, None)
@@ -71,6 +69,8 @@ class ClusteringTimelineGenerator():
 
         print('ranking clusters...')
         ranked_clusters = self.cluster_ranker.rank(clusters, collection)
+        with open(cluster_dir/f'{collection.name}_{j}.pkl', 'wb') as f:
+            pickle.dump(clusters, file=f)
 
         print('vectorizing sentences...')
 

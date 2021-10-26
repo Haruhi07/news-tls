@@ -71,8 +71,12 @@ class ClusteringTimelineGenerator():
 
         print('ranking clusters...')
         ranked_clusters = self.cluster_ranker.rank(clusters, collection)
+        batch = {
+            'cluster': ranked_clusters,
+            'ref': ref_tl
+        }
         with open(cluster_dir/f'{collection.name}_{j}.pkl', 'wb') as f:
-            pickle.dump(clusters, file=f)
+            pickle.dump(batch, file=f)
 
         print('vectorizing sentences...')
 

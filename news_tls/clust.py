@@ -381,22 +381,25 @@ class AffinityPropagationClusterer(Clusterer):
             elif method == 'cosine':
                 S = cosine_similarity(X) - 1
 
+            val = []
+
             for i, time_i in enumerate(times):
                 for j, time_j in enumerate(times):
                     time_gap = max(time_i, time_j) - min(time_i, time_j)
                     if time_gap > datetime.timedelta(days=4):
                         S[i][j] = -100
-            return S
+                    val.append(S[i][j])
+            return S, np.median(val)
 
-        S = calculate_similarity('cosine')
-        af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+        S, diag = calculate_similarity('euclid')
+        af = AffinityPropagation(preference=diag, affinity='precomputed').fit(S)
         cluster_centers = af.cluster_centers_indices_
         labels = af.labels_
 
         if labels[0] == -1:
-            print('euclid')
-            S = calculate_similarity('euclid')
-            af = AffinityPropagation(preference=-50, affinity='precomputed').fit(S)
+            print('cosine')
+            S, diag = calculate_similarity('cosine')
+            af = AffinityPropagation(preference=diag, affinity='precomputed').fit(S)
             cluster_centers = af.cluster_centers_indices_
             labels = af.labels_
 

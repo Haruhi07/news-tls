@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 def extract_keywords(ref_timeline, metric = 'tfidf'):
-    timeline = ref_timeline.data_to_summaries
+    timeline = ref_timeline.date_to_summaries
     text = [item["text"][0].lower() for item in timeline]
     if metric == "tfidf":
         vectorizer = TfidfVectorizer(stop_words = 'english')
